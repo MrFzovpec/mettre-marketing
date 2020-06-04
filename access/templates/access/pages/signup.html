@@ -12,14 +12,14 @@
                     <input @input="usernameCheck" v-model="username" type="text" name="username" placeholder="username"
                            class="input">
                     <span v-if="!check_user.username" class="error">Имя пользователя уже используется. <b><a
-                            href="/signin/">Войти</a></b></span>
+                            href="/login/">Войти</a></b></span>
                 </div>
                 <div class="control">
                     <label class="label" for="">Почта</label>
                     <input @input="emailCheck" v-model="email" type="email" name="email" placeholder="example@host.com"
                            class="input">
                     <span v-if="!check_user.email" class="error">Данная почта уже зарегистрированна в сервисе. <b><a
-                            href="/signin/">Войти</a></b></span>
+                            href="/login/">Войти</a></b></span>
                 </div>
                 <div class="control">
                     <label class="label" for="">Пароль</label>
