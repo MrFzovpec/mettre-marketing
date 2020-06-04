@@ -35,6 +35,8 @@
 }
 
 body {
+    max-width: 100vw;
+    overflow-x: hidden;
     background: #2f2f2f;
     color: white;
     font-family: "RussianDefault";
@@ -113,7 +115,7 @@ div.wrapper {
 }
 
 form.loginForm {
-    width: 70%;
+    width: 100%;
     margin: auto;
 }
 
@@ -234,4 +236,9 @@ span.mark {
 
 .post .subtitle {
     color: white;
+}
+
+.buttons:last-child {
+    margin-bottom: -.5rem;
+    height: 100%;
 }

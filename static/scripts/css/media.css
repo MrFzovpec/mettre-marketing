@@ -1,0 +1,63 @@
+@media screen and (max-width: 800px) {
+    .navbar-menu {
+        display: flex;
+        background-color: inherit;
+        align-items: center;
+        margin-left: 3%;
+    }
+
+    header .navbar-item {
+        margin-right: 0;
+        display: contents;
+        font-size: 0.8rem;
+    }
+
+    .content table thead th {
+        color: white;
+        font-size: 1rem;
+    }
+
+    .content table tbody tr td {
+        font-size: 1rem;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    aside.menu {
+        font-size: 1rem;
+        width: 300px;
+    }
+
+    #closeMenu {
+        left: 250px;
+    }
+
+    header .options .logo img {
+        width: 130px;
+    }
+
+    .content .title.is-2 {
+        font-size: 1.8rem;
+    }
+
+    .content .title.is-3 {
+        font-size: 1.3rem;
+    }
+
+    label.label {
+        font-size: 1rem;
+    }
+
+    input.input {
+        font-size: 0.8rem;
+    }
+
+    span.button, button.button {
+        font-size: 0.8rem;
+        padding-bottom: 1px;
+    }
+
+    p.about__paragraph, ol.points {
+        font-size: 1rem;
+    }
+}

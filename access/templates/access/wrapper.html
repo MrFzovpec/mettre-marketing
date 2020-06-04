@@ -8,8 +8,7 @@
     <link rel="stylesheet" href="/static/scripts/css/bulma.min.css">
     <link rel="stylesheet" href="/static/scripts/css/fonts.css">
     <link rel="stylesheet" href="/static/scripts/css/styles.css">
-    <script src="/static/scripts/js/vue.js"></script>
-    <script src="/static/scripts/js/main.js"></script>
+    <link rel="stylesheet" href="/static/scripts/css/media.css">
 </head>
 <body>
 <header>
@@ -17,13 +16,6 @@
         <div class="navbar-brand">
             <a class="logo navbar-item" href="/">
                 <img src="/static/media/images/icons/logo.png" alt="">
-            </a>
-
-            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
-               data-target="navbarBasicExample">
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
             </a>
         </div>
 
@@ -43,13 +35,17 @@
                     {% else %}
 
                         <div class="buttons">
-                            <a href="/signup/">
-                                <strong>Регистрация</strong>
-                            </a>
-                            <a href="/login/">
-                                <strong>Вход</strong>
+                            <div class="columns is-mobile">
+                                <div class="column is-half"><a href="/signup/">
+                                    <strong>Регистрация</strong>
+                                </a></div>
+                                <div class="column is-half"><a href="/login/">
+                                    <strong>Вход</strong>
 
-                            </a>
+                                </a></div>
+                            </div>
+
+
                         </div>
                     {% endif %}
 
@@ -63,6 +59,7 @@
     {% block content %}
     {% endblock %}
 </section>
-
+<script src="/static/scripts/js/vue.js"></script>
+<script src="/static/scripts/js/main.js"></script>
 </body>
 </html>

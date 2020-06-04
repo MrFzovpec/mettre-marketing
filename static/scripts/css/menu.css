@@ -22,6 +22,11 @@ aside.menu p.menu-label {
     font-size: 1.3rem;
 }
 
+header.custom-header {
+    display: flex;
+    align-items: center;
+}
+
 #closeMenu {
     position: absolute;
     top: 20px;
@@ -37,11 +42,22 @@ aside.menu p.menu-label {
     padding: 7px;
     justify-content: center;
 }
-#openMenu:hover{
+
+#openMenu img {
+    width: 25px
+}
+
+#openMenu:hover {
     transition: 0.3s;
     background: #2f2f2f;
 }
-header .options{
+
+header .options {
     display: flex;
     align-items: center;
+}
+
+header .options .logo img {
+    width: 170px;
+    padding-left: 3%;
 }
