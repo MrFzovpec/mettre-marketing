@@ -35,7 +35,10 @@ header.custom-header {
     display: flex;
 
 }
-
+#closeMenu img{
+    width: 25px;
+    height: 25px;
+}
 #openMenu {
     cursor: pointer;
     display: flex;
@@ -44,7 +47,8 @@ header.custom-header {
 }
 
 #openMenu img {
-    width: 25px
+    width: 25px;
+    height: 25px;
 }
 
 #openMenu:hover {
