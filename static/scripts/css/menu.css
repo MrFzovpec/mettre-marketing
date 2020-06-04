@@ -34,10 +34,14 @@ aside.menu p.menu-label {
 #openMenu {
     cursor: pointer;
     display: flex;
-    padding: 0.7%;
+    padding: 7px;
     justify-content: center;
 }
 #openMenu:hover{
     transition: 0.3s;
     background: #2f2f2f;
+}
+header .options{
+    display: flex;
+    align-items: center;
 }
