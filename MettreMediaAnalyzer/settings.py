@@ -25,7 +25,7 @@ SECRET_KEY = '#-!gpz3o*mo4(pk_oey()1#(jozxx3b72!es^(^y4eui!40@0a'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['176.99.11.218', 'mettre.ru']
 
 
 # Application definition

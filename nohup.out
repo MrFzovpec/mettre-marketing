@@ -1,0 +1,16 @@
+Watching for file changes with StatReloader
+Invalid HTTP_HOST header: '176.99.11.218'. You may need to add '176.99.11.218' to ALLOWED_HOSTS.
+Bad Request: /
+[04/Jun/2020 17:11:01] "GET / HTTP/1.1" 400 62387
+Invalid HTTP_HOST header: '176.99.11.218'. You may need to add '176.99.11.218' to ALLOWED_HOSTS.
+Bad Request: /favicon.ico
+[04/Jun/2020 17:11:02] "GET /favicon.ico HTTP/1.1" 400 62425
+/home/django/mettre-marketing/MettreMediaAnalyzer/settings.py changed, reloading.
+Performing system checks...
+
+System check identified no issues (0 silenced).
+June 04, 2020 - 17:10:35
+Django version 3.0.7, using settings 'MettreMediaAnalyzer.settings'
+Starting development server at http://0.0.0.0:80/
+Quit the server with CONTROL-C.
+Watching for file changes with StatReloader
