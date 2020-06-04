@@ -1,0 +1,237 @@
+@-webkit-keyframes fade-in {
+    0% {
+        opacity: 0.1;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes fade-in {
+    0% {
+        opacity: 0.1;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@-o-keyframes fade-in {
+    0% {
+        opacity: 0.1;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0.1;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+body {
+    background: #2f2f2f;
+    color: white;
+    font-family: "RussianDefault";
+    min-height: 100vh;
+    padding-bottom: 5%;
+}
+
+h1, h2, h3, p, span, .title, .subtitle {
+    color: white;
+    font-family: "RussianDefault";
+}
+
+header {
+    font-family: "RussianDefault";
+    padding: 1%;
+    font-size: 1.2rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+header.custom-header {
+    display: flex;
+}
+
+header nav.navbar {
+    display: flex;
+    width: 100%;
+}
+
+header, header .navbar {
+    background-color: #262626;
+
+}
+
+header .navbar-brand {
+    margin-left: 5%;
+}
+
+header .navbar-item img {
+    max-height: 2.3rem;
+}
+
+header .navbar-item {
+    margin-right: 5%;
+}
+
+header .buttons a {
+    margin: 5px;
+    color: white;
+    text-transform: uppercase;
+    width: 100px;
+    padding: 10px 3px 8px 3px;
+    text-align: center;
+    cursor: pointer;
+}
+
+header .buttons a:hover {
+    cursor: pointer;
+    transition: 0.5s;
+    text-decoration: underline;
+    background: white;
+    border-radius: 3px;
+    color: #262626;
+}
+
+
+div.wrapper {
+    min-height: 75vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-animation: fade-in 1s linear; /* Safari 4+ */
+    -moz-animation: fade-in 1s linear; /* Fx 5+ */
+    -o-animation: fade-in 1s linear; /* Opera 12+ */
+    animation: fade-in 1s linear; /* IE 10+, Fx 29+ */
+}
+
+form.loginForm {
+    width: 70%;
+    margin: auto;
+}
+
+form .control {
+    margin-bottom: 3%;
+}
+
+form textarea.textarea, form input.input {
+    background: none;
+    color: white;
+}
+
+form textarea.textarea::placeholder, form input.input::placeholder {
+    color: #bdbdbd;
+}
+
+span.button, button.button {
+    background: none;
+    color: white;
+    cursor: pointer;
+    font-family: "RussianDefault";
+    font-size: 1.2rem;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 6px;
+    margin-right: 3%;
+
+}
+
+span.error {
+    color: red;
+    font-size: 1.1rem;
+}
+
+button.button:hover, span.button:hover {
+    background: white;
+    color: #2f2f2f;
+
+}
+
+label.label {
+    font-size: 1.5rem;
+    color: white;
+}
+
+span.subtitle {
+    font-size: 1.6rem;
+}
+
+p.about__paragraph, ol.points {
+    font-size: 1.4rem;
+    font-family: "RussianDefaultLight";
+    text-align: justify;
+}
+
+.select:not(.is-multiple):not(.is-loading)::after {
+    border-color: white;
+}
+
+.select select {
+    background-color: inherit;
+    border-color: white;
+    border-radius: 4px;
+    color: white;
+    font-family: "RussianDefault";
+    font-size: 1.1rem;
+}
+
+section#app {
+    display: flex;
+}
+
+div#content {
+    color: white;
+}
+
+.content .title {
+    color: white;
+}
+
+.content table thead th {
+    color: white;
+    font-size: 1.3rem;
+}
+
+.content table tbody tr td {
+    font-size: 1.2rem;
+}
+
+
+span.mark {
+    font-size: 50px;
+    color: crimson;
+}
+
+.marks {
+    padding: 1%;
+}
+
+.info__subtitle {
+    text-align: center;
+    border: 1px solid white;
+
+}
+
+.info__subtitle span:nth-child(1) {
+    font-weight: bold;
+    font-size: 1.2rem;
+
+}
+
+.post {
+    border: 1px solid white;
+    border-radius: 10px;
+    padding: 3%;
+    margin-bottom: 2%;
+}
+
+.post .subtitle {
+    color: white;
+}

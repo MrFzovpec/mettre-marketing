@@ -1,0 +1,17 @@
+@font-face {
+    font-family: "RussianDefault";
+    src: url("/static/media/fonts/Yanone_Kaffeesatz/static/YanoneKaffeesatz-Light.ttf");
+    font-weight: normal;
+}
+@font-face {
+    font-family: "RussianDefaultLight";
+    font-weight: bold;
+    src: url("/static/media/fonts/Yanone_Kaffeesatz/static/YanoneKaffeesatz-ExtraLight.ttf");
+
+}
+@font-face {
+    font-family: "RussianDefaultBold";
+    font-weight: bold;
+    src: url("/static/media/fonts/Yanone_Kaffeesatz/static/YanoneKaffeesatz-Bold.ttf");
+
+}

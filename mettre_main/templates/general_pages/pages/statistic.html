@@ -1,0 +1,192 @@
+{% extends '../wrapper.html' %}
+
+{% block content %}
+    <h2 class="title is-2">Статистика по вышедшим публикациям</h2>
+    <div class="columns">
+        <div class="column is-half">
+            <label for="" class="label">Лучший пост за период</label>
+            <div class="post">
+                <h1 class="subtitle is-5">Заголовок поста</h1>
+                <span><b>Успешность:</b> 90%</span><br>
+                <span><b>Площадка:</b> Facebook</span><br>
+                <span><b>Просмотры:</b> 10000</span><br>
+                <span><b>Ссылка:</b> <a href="">vk.com</a></span><br>
+                <span><b>Активные действия:</b> 1000</span><br>
+                <span><b>Текст поста:</b></span><br><br>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eleifend a est sit amet
+                    scelerisque. Suspendisse non mi vitae risus hendrerit gravida sit amet at dui. Praesent
+                    sagittis dolor non volutpat aliquet. Phasellus elementum, tellus sit amet cursus
+                    ultrices, ex purus vulputate metus, id pellentesque libero turpis ut est. Morbi lectus
+                    arcu, tincidunt in lacus et, malesuada fringilla dui. Vestibulum commodo diam sit amet
+                    orci dapibus sodales. Donec suscipit ullamcorper porta. Donec in aliquet tellus.
+                    Vestibulum sit amet arcu a ante accumsan hendrerit. Etiam diam sapien, aliquam nec
+                    elementum ac, congue quis arcu. Nulla leo ante, rutrum ac sapien sit amet, maximus
+                    efficitur lectus. Cras id eleifend lorem, in semper lectus. Phasellus lectus felis,
+                    consequat at urna in, molestie facilisis justo. Quisque sed nunc finibus, porttitor
+                    felis commodo, aliquam magna. Proin condimentum faucibus tellus. Etiam lacinia tincidunt
+                    ligula sit amet finibus.</p>
+            </div>
+        </div>
+        <div class="column">
+            <label class="label">Популярность категорий в Вашей соцсети</label>
+            <div id="social_piechart" style="width: 100%; height: 50vh;"></div>
+        </div>
+    </div>
+    <label for="" class="label">Список самых популярных постов за период</label>
+    <div class="columns is-desktop">
+        <div class="column is-half">
+
+            <div class="post">
+                <h1 class="subtitle is-5">Заголовок поста</h1>
+                <span><b>Успешность:</b> 90%</span><br>
+                <span><b>Площадка:</b> Facebook</span><br>
+                <span><b>Просмотры:</b> 10000</span><br>
+                <span><b>Ссылка:</b> <a href="">vk.com</a></span><br>
+                <span><b>Активные действия:</b> 1000</span><br>
+                <span><b>Текст поста:</b></span><br><br>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eleifend a est sit amet
+                    scelerisque. Suspendisse non mi vitae risus hendrerit gravida sit amet at dui. Praesent
+                    sagittis dolor non volutpat aliquet. Phasellus elementum, tellus sit amet cursus
+                    ultrices, ex purus vulputate metus, id pellentesque libero turpis ut est. Morbi lectus
+                    arcu, tincidunt in lacus et, malesuada fringilla dui. Vestibulum commodo diam sit amet
+                    orci dapibus sodales. Donec suscipit ullamcorper porta. Donec in aliquet tellus.
+                    Vestibulum sit amet arcu a ante accumsan hendrerit. Etiam diam sapien, aliquam nec
+                    elementum ac, congue quis arcu. Nulla leo ante, rutrum ac sapien sit amet, maximus
+                    efficitur lectus. Cras id eleifend lorem, in semper lectus. Phasellus lectus felis,
+                    consequat at urna in, molestie facilisis justo. Quisque sed nunc finibus, porttitor
+                    felis commodo, aliquam magna. Proin condimentum faucibus tellus. Etiam lacinia tincidunt
+                    ligula sit amet finibus.</p>
+            </div>
+        </div>
+        <div class="column is-half">
+
+            <div class="post">
+                <h1 class="subtitle is-5">Заголовок поста</h1>
+                <span><b>Успешность:</b> 90%</span><br>
+                <span><b>Площадка:</b> Facebook</span><br>
+                <span><b>Просмотры:</b> 10000</span><br>
+                <span><b>Ссылка:</b> <a href="">vk.com</a></span><br>
+                <span><b>Активные действия:</b> 1000</span><br>
+                <span><b>Текст поста:</b></span><br><br>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eleifend a est sit amet
+                    scelerisque. Suspendisse non mi vitae risus hendrerit gravida sit amet at dui. Praesent
+                    sagittis dolor non volutpat aliquet. Phasellus elementum, tellus sit amet cursus
+                    ultrices, ex purus vulputate metus, id pellentesque libero turpis ut est. Morbi lectus
+                    arcu, tincidunt in lacus et, malesuada fringilla dui. Vestibulum commodo diam sit amet
+                    orci dapibus sodales. Donec suscipit ullamcorper porta. Donec in aliquet tellus.
+                    Vestibulum sit amet arcu a ante accumsan hendrerit. Etiam diam sapien, aliquam nec
+                    elementum ac, congue quis arcu. Nulla leo ante, rutrum ac sapien sit amet, maximus
+                    efficitur lectus. Cras id eleifend lorem, in semper lectus. Phasellus lectus felis,
+                    consequat at urna in, molestie facilisis justo. Quisque sed nunc finibus, porttitor
+                    felis commodo, aliquam magna. Proin condimentum faucibus tellus. Etiam lacinia tincidunt
+                    ligula sit amet finibus.</p>
+            </div>
+        </div>
+    </div>
+    <div class="columns is-desktop">
+        <div class="column is-half">
+
+            <div class="post">
+                <h1 class="subtitle is-5">Заголовок поста</h1>
+                <span><b>Успешность:</b> 90%</span><br>
+                <span><b>Площадка:</b> Facebook</span><br>
+                <span><b>Просмотры:</b> 10000</span><br>
+                <span><b>Ссылка:</b> <a href="">vk.com</a></span><br>
+                <span><b>Активные действия:</b> 1000</span><br>
+                <span><b>Текст поста:</b></span><br><br>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eleifend a est sit amet
+                    scelerisque. Suspendisse non mi vitae risus hendrerit gravida sit amet at dui. Praesent
+                    sagittis dolor non volutpat aliquet. Phasellus elementum, tellus sit amet cursus
+                    ultrices, ex purus vulputate metus, id pellentesque libero turpis ut est. Morbi lectus
+                    arcu, tincidunt in lacus et, malesuada fringilla dui. Vestibulum commodo diam sit amet
+                    orci dapibus sodales. Donec suscipit ullamcorper porta. Donec in aliquet tellus.
+                    Vestibulum sit amet arcu a ante accumsan hendrerit. Etiam diam sapien, aliquam nec
+                    elementum ac, congue quis arcu. Nulla leo ante, rutrum ac sapien sit amet, maximus
+                    efficitur lectus. Cras id eleifend lorem, in semper lectus. Phasellus lectus felis,
+                    consequat at urna in, molestie facilisis justo. Quisque sed nunc finibus, porttitor
+                    felis commodo, aliquam magna. Proin condimentum faucibus tellus. Etiam lacinia tincidunt
+                    ligula sit amet finibus.</p>
+            </div>
+        </div>
+        <div class="column is-half">
+
+            <div class="post">
+                <h1 class="subtitle is-5">Заголовок поста</h1>
+                <span><b>Успешность:</b> 90%</span><br>
+                <span><b>Площадка:</b> Facebook</span><br>
+                <span><b>Просмотры:</b> 10000</span><br>
+                <span><b>Ссылка:</b> <a href="">vk.com</a></span><br>
+                <span><b>Активные действия:</b> 1000</span><br>
+                <span><b>Текст поста:</b></span><br><br>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eleifend a est sit amet
+                    scelerisque. Suspendisse non mi vitae risus hendrerit gravida sit amet at dui. Praesent
+                    sagittis dolor non volutpat aliquet. Phasellus elementum, tellus sit amet cursus
+                    ultrices, ex purus vulputate metus, id pellentesque libero turpis ut est. Morbi lectus
+                    arcu, tincidunt in lacus et, malesuada fringilla dui. Vestibulum commodo diam sit amet
+                    orci dapibus sodales. Donec suscipit ullamcorper porta. Donec in aliquet tellus.
+                    Vestibulum sit amet arcu a ante accumsan hendrerit. Etiam diam sapien, aliquam nec
+                    elementum ac, congue quis arcu. Nulla leo ante, rutrum ac sapien sit amet, maximus
+                    efficitur lectus. Cras id eleifend lorem, in semper lectus. Phasellus lectus felis,
+                    consequat at urna in, molestie facilisis justo. Quisque sed nunc finibus, porttitor
+                    felis commodo, aliquam magna. Proin condimentum faucibus tellus. Etiam lacinia tincidunt
+                    ligula sit amet finibus.</p>
+            </div>
+        </div>
+    </div>
+    <div class="columns is-desktop">
+        <div class="column is-half">
+
+            <div class="post">
+                <h1 class="subtitle is-5">Заголовок поста</h1>
+                <span><b>Успешность:</b> 90%</span><br>
+                <span><b>Площадка:</b> Facebook</span><br>
+                <span><b>Просмотры:</b> 10000</span><br>
+                <span><b>Ссылка:</b> <a href="">vk.com</a></span><br>
+                <span><b>Активные действия:</b> 1000</span><br>
+                <span><b>Текст поста:</b></span><br><br>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eleifend a est sit amet
+                    scelerisque. Suspendisse non mi vitae risus hendrerit gravida sit amet at dui. Praesent
+                    sagittis dolor non volutpat aliquet. Phasellus elementum, tellus sit amet cursus
+                    ultrices, ex purus vulputate metus, id pellentesque libero turpis ut est. Morbi lectus
+                    arcu, tincidunt in lacus et, malesuada fringilla dui. Vestibulum commodo diam sit amet
+                    orci dapibus sodales. Donec suscipit ullamcorper porta. Donec in aliquet tellus.
+                    Vestibulum sit amet arcu a ante accumsan hendrerit. Etiam diam sapien, aliquam nec
+                    elementum ac, congue quis arcu. Nulla leo ante, rutrum ac sapien sit amet, maximus
+                    efficitur lectus. Cras id eleifend lorem, in semper lectus. Phasellus lectus felis,
+                    consequat at urna in, molestie facilisis justo. Quisque sed nunc finibus, porttitor
+                    felis commodo, aliquam magna. Proin condimentum faucibus tellus. Etiam lacinia tincidunt
+                    ligula sit amet finibus.</p>
+            </div>
+        </div>
+        <div class="column is-half">
+
+            <div class="post">
+                <h1 class="subtitle is-5">Заголовок поста</h1>
+                <span><b>Успешность:</b> 90%</span><br>
+                <span><b>Площадка:</b> Facebook</span><br>
+                <span><b>Просмотры:</b> 10000</span><br>
+                <span><b>Ссылка:</b> <a href="">vk.com</a></span><br>
+                <span><b>Активные действия:</b> 1000</span><br>
+                <span><b>Текст поста:</b></span><br><br>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean eleifend a est sit amet
+                    scelerisque. Suspendisse non mi vitae risus hendrerit gravida sit amet at dui. Praesent
+                    sagittis dolor non volutpat aliquet. Phasellus elementum, tellus sit amet cursus
+                    ultrices, ex purus vulputate metus, id pellentesque libero turpis ut est. Morbi lectus
+                    arcu, tincidunt in lacus et, malesuada fringilla dui. Vestibulum commodo diam sit amet
+                    orci dapibus sodales. Donec suscipit ullamcorper porta. Donec in aliquet tellus.
+                    Vestibulum sit amet arcu a ante accumsan hendrerit. Etiam diam sapien, aliquam nec
+                    elementum ac, congue quis arcu. Nulla leo ante, rutrum ac sapien sit amet, maximus
+                    efficitur lectus. Cras id eleifend lorem, in semper lectus. Phasellus lectus felis,
+                    consequat at urna in, molestie facilisis justo. Quisque sed nunc finibus, porttitor
+                    felis commodo, aliquam magna. Proin condimentum faucibus tellus. Etiam lacinia tincidunt
+                    ligula sit amet finibus.</p>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="/static/scripts/js/charts.js"></script>
+    <script>
+        category_pie_social()
+    </script>
+{% endblock %}

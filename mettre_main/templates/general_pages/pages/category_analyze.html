@@ -1,0 +1,26 @@
+{% extends '../wrapper.html' %}
+
+{% block content %}
+    <h2 class="title is-2">Категориальный анализ</h2>
+    <div class="columns">
+        <div class="column is-half">
+            <label class="label">Популярность категорий в Вашей соцсети</label>
+            <div id="social_piechart" style="width: 100%; height: 50vh;"></div>
+        </div>
+        <div class="column is-half">
+            <label class="label">Популярность категорий в поисковых системах</label>
+            <div id="browser_piechart" style="width: 100%; height: 50vh;"></div>
+        </div>
+    </div>
+    <label class="label">Популярность категорий в поисковых системах</label>
+    <div id="linen_category_graph" style="width: 100%; height: 50vh;"></div>
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="/static/scripts/js/charts.js"></script>
+    <script>
+        category_pie_social()
+        category_pie_browser()
+        linen_category_graph()
+    </script>
+
+{% endblock %}

@@ -1,0 +1,43 @@
+aside.menu {
+    color: white;
+    font-size: 1rem;
+    background: #262626;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    width: 350px;
+    padding-left: 25px;
+    padding-right: 25px;
+    padding-top: 45px;
+    display: none;
+    z-index: 9999;
+    position: fixed;
+}
+
+aside.menu p, ul li a, .menu-list a {
+    color: white;
+}
+
+aside.menu p.menu-label {
+    font-size: 1.3rem;
+}
+
+#closeMenu {
+    position: absolute;
+    top: 20px;
+    left: 300px;
+    cursor: pointer;
+    display: flex;
+
+}
+
+#openMenu {
+    cursor: pointer;
+    display: flex;
+    padding: 0.7%;
+    justify-content: center;
+}
+#openMenu:hover{
+    transition: 0.3s;
+    background: #2f2f2f;
+}

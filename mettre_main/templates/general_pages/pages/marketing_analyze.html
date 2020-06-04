@@ -1,0 +1,59 @@
+{% extends '../wrapper.html' %}
+
+{% block content %}
+    <h2 class="title is-2">Маркетинговый анализ</h2>
+    <div class="control">
+
+
+        <form method="post" action="">
+            {% csrf_token %}
+            <label class="label">Вставьте в поле ниже текст публикации и наши алгоритмы проанализируют его и выдадут
+                вывод</label>
+            <textarea required placeholder="Вставьте текст сюда" name="text" id="" cols="30" rows="10"
+                      class="textarea">{{ text }}</textarea>
+            <br>
+            <button type="submit" class="button">Анализ</button>
+        </form>
+    </div>
+    {% if text %}
+    <h2 class="title is-2">Результаты</h2>
+    <div class="marks">
+        <div class="columns">
+            <div class="column info__subtitle">
+                <span class="">Вероятность успешность в Facebook</span><br>
+                <span class="mark" style="color: #007b86">50%</span>
+            </div>
+            <div class="column info__subtitle">
+                <span class="">Вероятность успешность в Instagram</span><br>
+                <span class="mark" style="color: pink">40%</span>
+            </div>
+            <div class="column info__subtitle">
+                <span class="">Вероятность успешность в Telegram</span><br>
+                <span class="mark">16%</span>
+            </div>
+        </div>
+        <br>
+        <label class="label">Распознанные категории</label>
+        <p class="about__paragraph">
+            #Бизнес, #IT
+        </p>
+        <br>
+        <label class="label">Количество запросов в поисковых системах по категориям</label>
+        <div id="chart_div" style="width: 100%; height: 500px;"></div>
+        <label class="label">Комментарии к публикации</label>
+        <p class="about__paragraph">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+            incididunt ut labore et dolore
+            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+            commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+            nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit
+            anim id est laborum.
+        </p>
+    </div>
+    {% endif %}
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="/static/scripts/js/charts.js"></script>
+    <script>
+        linen_graph()
+    </script>
+{% endblock %}

@@ -1,0 +1,187 @@
+{% extends '../wrapper.html' %}
+
+{% block content %}
+
+    <h2 class="title is-2">Профиль пользователя</h2>
+
+    <form style="margin-bottom: 3%" action="">
+        <h1 style="text-decoration: underline" class="title is-3">Персональные данные</h1>
+        <div id="personalData" class="columns">
+            <div class="column">
+                <div class="control">
+                    <label for="" class="label">Имя пользователя</label>
+                    <input type="text" value="{{ user.username }}" name="username" class="input">
+                </div>
+            </div>
+            <div class="column">
+                <div class="control">
+                    <label for="" class="label">Почта</label>
+                    <input type="text" value="{{ user.email }}" name="email" class="input">
+                </div>
+            </div>
+
+        </div>
+        <div class="columns">
+            <div class="column">
+                <div class="control">
+                    <label for="" class="label">Имя</label>
+                    <input type="text" placeholder="Например: Иван" value="{{ user.first_name }}"
+                           name="first_name" class="input">
+                </div>
+            </div>
+            <div class="column">
+                <div class="control">
+                    <label for="" class="label">Фамилия</label>
+                    <input type="text" placeholder="Например: Иванов" value="{{ user.last_name }}"
+                           name="last_name" class="input">
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="button">Сохранить</button>
+    </form>
+
+    <div class="columns">
+        <div class="column">
+            <h1 style="text-decoration: underline" class="title is-3">Подключенные соцсети</h1>
+            <table>
+                <thead>
+                <th>Название</th>
+                <th>Ссылка</th>
+                <th>Username</th>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Telegram</td>
+                    <td><a href="">https://t.me/danila</a></td>
+                    <td>@obgps</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="column">
+            <h1 style="text-decoration: underline" class="title is-3">Добавить новые соцсети</h1>
+            <form id="personalNetworks" action="">
+
+
+                <div class="control">
+                    <label for="" class="label">Выберите платформу</label>
+                    <div class="select">
+                        <select name="social" style="text-transform: capitalize">
+                            <option value="t.me">Telegram</option>
+                            <option value="instagram">Instagram</option>
+                            <option value="vk">ВКонтакте</option>
+                        </select>
+
+                    </div>
+                </div>
+                <div class="control">
+                    <label for="" class="label">Вставьте ссылку на соцсеть</label>
+                    <input required name="social_url" type="url"
+                           placeholder="Ссылка на Вашу соцсеть" class="input">
+                </div>
+                <div>
+                    <button type="submit" class="button">
+                        Добавить
+                    </button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <h2 class="title is-2">Тарифы</h2>
+    <div class="columns" id="personalPlans">
+        <div class="column">
+            <div class="card">
+                <header class="card-header">
+                    <p class="card-header-title">
+                        Базовый
+                    </p>
+                </header>
+                <div class="card-content">
+                    <div class="content">
+                        <span class="subtitle is-5 card-subtitle">Доступно:</span>
+                        <ul>
+                            <li>По 1 аккаунту в каждой соцсети</li>
+                            <li>Анализ постов на основе ранних публикаций</li>
+                            <li>Просмотр статистики по публикациям</li>
+                        </ul>
+                        <span class="subtitle is-5 card-subtitle">Стоимость: 1500 руб/месяц</span>
+                    </div>
+                </div>
+                <footer class="card-footer">
+                    <a class="card-footer-item">Выбранно</a>
+                </footer>
+            </div>
+        </div>
+        <div class="column">
+            <div class="card available">
+                <header class="card-header">
+                    <p class="card-header-title">
+                        Базовый
+                    </p>
+                </header>
+                <div class="card-content">
+                    <div class="content">
+                        <span class="subtitle is-5 card-subtitle">Доступно:</span>
+                        <ul>
+                            <li>По 1 аккаунту в каждой соцсети</li>
+                            <li>Анализ постов на основе ранних публикаций</li>
+                            <li>Просмотр статистики по публикациям</li>
+                        </ul>
+                        <span class="subtitle is-5 card-subtitle">Стоимость: 1500 руб/месяц</span>
+                    </div>
+                </div>
+                <footer class="card-footer">
+                    <a href="#" class="card-footer-item">Выбрать</a>
+                </footer>
+            </div>
+        </div>
+        <div class="column">
+            <div class="card available">
+                <header class="card-header">
+                    <p class="card-header-title">
+                        Базовый
+                    </p>
+                </header>
+                <div class="card-content">
+                    <div class="content">
+                        <span class="subtitle is-5 card-subtitle">Доступно:</span>
+                        <ul>
+                            <li>По 1 аккаунту в каждой соцсети</li>
+                            <li>Анализ постов на основе ранних публикаций</li>
+                            <li>Просмотр статистики по публикациям</li>
+                        </ul>
+                        <span class="subtitle is-5 card-subtitle">Стоимость: 1500 руб/месяц</span>
+                    </div>
+                </div>
+                <footer class="card-footer">
+                    <a href="#" class="card-footer-item">Выбрать</a>
+                </footer>
+            </div>
+        </div>
+        <div class="column">
+            <div class="card available">
+                <header class="card-header">
+                    <p class="card-header-title">
+                        Базовый
+                    </p>
+                </header>
+                <div class="card-content">
+                    <div class="content">
+                        <span class="subtitle is-5 card-subtitle">Доступно:</span>
+                        <ul>
+                            <li>По 1 аккаунту в каждой соцсети</li>
+                            <li>Анализ постов на основе ранних публикаций</li>
+                            <li>Просмотр статистики по публикациям</li>
+                        </ul>
+                        <span class="subtitle is-5 card-subtitle">Стоимость: 1500 руб/месяц</span>
+                    </div>
+                </div>
+                <footer class="card-footer">
+                    <a href="#" class="card-footer-item">Выбрать</a>
+                </footer>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

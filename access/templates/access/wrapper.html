@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>METTRE – marketing analyze</title>
+    {% load static %}
+    <link rel="stylesheet" href="/static/scripts/css/bulma.min.css">
+    <link rel="stylesheet" href="/static/scripts/css/fonts.css">
+    <link rel="stylesheet" href="/static/scripts/css/styles.css">
+    <script src="/static/scripts/js/vue.js"></script>
+    <script src="/static/scripts/js/main.js"></script>
+</head>
+<body>
+<header>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="logo navbar-item" href="/">
+                <img src="/static/media/images/icons/logo.png" alt="">
+            </a>
+
+            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+               data-target="navbarBasicExample">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="navbarBasicExample" class="navbar-menu">
+
+
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    {% if user.is_authenticated %}
+                        <a style="margin-right: 50px" href="/profile" class="navbar-item">Текущий
+                            пользователь: {{ user.username }}</a>
+                        <div class="buttons">
+                            <a href="/logout/" class="button is-primary">
+                                <strong>Выйти</strong>
+                            </a>
+                        </div>
+                    {% else %}
+
+                        <div class="buttons">
+                            <a href="/signup/">
+                                <strong>Регистрация</strong>
+                            </a>
+                            <a href="/login/">
+                                <strong>Вход</strong>
+
+                            </a>
+                        </div>
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<section class="section container">
+    {% block content %}
+    {% endblock %}
+</section>
+
+</body>
+</html>

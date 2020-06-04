@@ -1,0 +1,182 @@
+{% extends '../wrapper.html' %}
+
+{% block content %}
+    <div id="app" class="wrapper">
+
+        <form class="form loginForm" action="" method="post">
+            {% csrf_token %}
+            <div v-if="current_screen == 0 || current_screen == 3" class="first__screen">
+                <h2 class="title is-1">Регистрация</h2>
+                <div class="control">
+                    <label class="label" for="">Имя пользователя</label>
+                    <input @input="usernameCheck" v-model="username" type="text" name="username" placeholder="username"
+                           class="input">
+                    <span v-if="!check_user.username" class="error">Имя пользователя уже используется. <b><a
+                            href="/signin/">Войти</a></b></span>
+                </div>
+                <div class="control">
+                    <label class="label" for="">Почта</label>
+                    <input @input="emailCheck" v-model="email" type="email" name="email" placeholder="example@host.com"
+                           class="input">
+                    <span v-if="!check_user.email" class="error">Данная почта уже зарегистрированна в сервисе. <b><a
+                            href="/signin/">Войти</a></b></span>
+                </div>
+                <div class="control">
+                    <label class="label" for="">Пароль</label>
+                    <input v-model="password" type="password" name="password" placeholder="От 8 до 24 символов"
+                           class="input">
+                    <span v-if="password.length !== 0 && (password.length < 8 || password.length > 24)" class="error">Пароль не соответсует требованиям.</span>
+                </div>
+                <div class="control">
+                    <label class="label" for="">Подтвердите пароль</label>
+                    <input v-model="confirm_password" type="password" name="confirm_password" placeholder=""
+                           class="input">
+                    <span v-if="confirm_password.length !== 0 && confirm_password !== password" class="error">Пароли не совпадают</span>
+                </div>
+                <div v-if="check_user.username && check_user.email && password.length !== 0 && (password.length >= 8 || password.length <= 24) && confirm_password === password">
+                    <span @click="nextScreen" class="button">Продолжить</span>
+                </div>
+                <div v-else>
+                    <span class="is-disabled">Заполните информацию</span>
+                </div>
+
+            </div>
+            <div v-if="current_screen == 1 || current_screen == 3" class="second__screen">
+                <h2 class="title is-2">Краткая информация о сервисе</h2>
+
+                <span class="subtitle">
+                    Концепция
+                </span>
+                <br>
+                <p class="about__paragraph">
+                    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
+                    deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non
+                    provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum
+                    fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis
+                    est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis
+                    voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis
+                    aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non
+                    recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus
+                    maiores alias consequatur aut perferendis doloribus asperiores repellat
+                </p><br>
+                <span class="subtitle">
+                    Принцип работы
+                </span>
+                <br>
+                <p class="about__paragraph">
+                    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
+                    deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non
+                    provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum
+                    fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis
+                    est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis
+                    voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis
+                    aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non
+                    recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus
+                    maiores alias consequatur aut perferendis doloribus asperiores repellat
+                </p><br>
+                <span class="subtitle">
+                    С чего начать?
+                </span>
+                <br>
+                <p class="about__paragraph">
+                    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
+                    deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non
+                    provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum
+                    fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis
+                    est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis
+                    voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis
+                    aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non
+                    recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus
+                    maiores alias consequatur aut perferendis doloribus asperiores repellat
+                </p><br>
+                <ol style="padding-left: 5%" class="points">
+                    <li> At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+                        voluptatum
+                        deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non
+                        provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et
+                        dolorum
+                        fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta
+                        nobis
+                        est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis
+                        voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis
+                        debitis
+                        aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non
+                        recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus
+                        maiores alias consequatur aut perferendis doloribus asperiores repellat
+                    </li>
+                    <li> At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+                        voluptatum
+                        deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non
+                        provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et
+                        dolorum
+                        fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta
+                        nobis
+                        est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis
+                        voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis
+                        debitis
+                        aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non
+                        recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus
+                        maiores alias consequatur aut perferendis doloribus asperiores repellat
+                    </li>
+                    <li> At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
+                        voluptatum
+                        deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non
+                        provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et
+                        dolorum
+                        fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta
+                        nobis
+                        est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis
+                        voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis
+                        debitis
+                        aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non
+                        recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus
+                        maiores alias consequatur aut perferendis doloribus asperiores repellat
+                    </li>
+                </ol>
+
+                <br>
+                <div>
+                    <span @click="prevScreen" class="button">Назад</span>
+                    <span @click="nextScreen" class="button">Продолжить</span>
+                </div>
+            </div>
+            <div v-if="current_screen == 2 || current_screen == 3" class="third__screen">
+                <h2 class="title is-2">Давайте добавим Вашу первую соцсеть</h2>
+                <span class="subtitle">
+                    Как и зачем мы обрабатываем Ваши данные
+                </span>
+                <br>
+                <p class="about__paragraph">
+                    At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
+                    deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non
+                    provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum
+                    fuga.
+                </p><br>
+                <div class="control">
+                    <label for="" class="label">Выберите платформу</label>
+                    <div class="select">
+                        <select v-model="selected_social" name="social" style="text-transform: capitalize">
+                            <option value="t.me">Telegram</option>
+                            <option value="instagram">Instagram</option>
+                            <option value="vk">ВКонтакте</option>
+                        </select>
+
+                    </div>
+                </div>
+                <div v-if="selected_social" class="control">
+                    <label for="" class="label">Вставьте ссылку на соцсеть</label>
+                    <input required v-model="social_url" name="social_url" type="url" :placeholder="'Ссылка на Ваш '+ [[selected_social]]" class="input">
+                </div>
+                <div>
+                    <span @click="prevScreen" class="button">Назад</span>
+                    <button v-if="social_url && social_url.includes('http') && social_url.includes(selected_social)" @click="nextScreen" class="button">Продолжить</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+    <script src="/static/scripts/js/vue.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="/static/scripts/js/vue-scripts.js"></script>
+
+{% endblock %}

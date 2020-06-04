@@ -1,0 +1,47 @@
+/* selected card */
+.card {
+    border-radius: 10px;
+}
+
+.card.available:hover {
+    border: 1px solid white;
+}
+
+.card .card-subtitle {
+    color: black;
+}
+
+.card .card-footer {
+    border-top: 1px solid #ededed;
+}
+
+.card .card-footer-item {
+    color: black;
+}
+
+.card .card-footer-item:hover, .card.available .card-footer-item:hover {
+    color: grey;
+    border-radius: 0 0 10px 10px;
+}
+
+/* available card */
+.card.available .card-footer {
+    border-top: 1px solid #2f2f2f;
+}
+
+.card.available .card-footer-item {
+    color: white;
+}
+
+.card.available {
+    background-color: #262626;
+    color: white;
+}
+
+.card.available .card-header-title {
+    color: white;
+}
+
+.card.available .card-subtitle {
+    color: white;
+}
