@@ -6,4 +6,5 @@ The categories are parsed from the <a href = 'https://trends.google.ru/trends/tr
 
 <b>cats_update/trends_google.py</b> - the file contains the GoogleTrends parse, availiable to set it up for different instance. On call 
 starts to parse google trends page.<br>
-P.S right now it doesn't work, because the google page doesn't refresh after the button clicking
+P.S right now it doesn't work, because the google page doesn't refresh after the button clicking <br>
+<b>cats_update/model.py</b> - the file contains a class of the model <i>DistilBERTClassification</i> and the function <i>get_the_model</i> which uploads the model with its trained weights
