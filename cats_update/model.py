@@ -1,24 +1,21 @@
 import torch
 from torch import nn
+from transformers import DistilBertModel
+import os
 
 
 class DistilBERTClassification(nn.Module):
-    def __init__(self, first: bool, dataloader, train_dataset, test_dataset):
+    def __init__(self):
         '''
           Initializes a model
           @param: first. If True - than its the first training and the model is going
           to use an AllenNLP dataset
         '''
         super().__init__()
-        # Training configurations
-        self.first = first
-        self.dataloader = dataloader
-        self.train_dataset = train_dataset
-        self.test_dataset = test_dataset
 
         # Model itself
         self.transformer = DistilBertModel.from_pretrained('distilbert-base-multilingual-cased')
-        self.linear = nn.Linear(3072, 3)
+        self.linear = nn.Linear(3072, 2)
         self.softmax = nn.Softmax(dim=1)
 
     def forward(self, x):
@@ -31,10 +28,13 @@ class DistilBERTClassification(nn.Module):
         return x
 
 
-def get_the_model(filepath):
+def get_the_model(filepath=os.path.join('Models', 'model.th')):
     '''
         The function returns an object of DistilBERTClassification instance
     '''
-    model = DistilBERTClassification
+    model = DistilBERTClassification()
     with open(filepath, 'rb') as f:
         model.load_state_dict(torch.load(f))
+
+
+get_the_model()
