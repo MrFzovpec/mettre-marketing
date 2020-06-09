@@ -36,5 +36,4 @@ def get_the_model(filepath=os.path.join('Models', 'model.th')):
     with open(filepath, 'rb') as f:
         model.load_state_dict(torch.load(f))
 
-
-get_the_model()
+    return model
