@@ -2,9 +2,8 @@ import selenium
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import InvalidArgumentException
+from secret import get_username, get_password
 import time
 
 
@@ -15,7 +14,7 @@ class InstagramPageParser():
         self.url = url
         self.data = []
 
-    def login(self, login='', password=''):
+    def login(self, login=get_username(), password=get_password()):
         ''' Logining function '''
         u_input = self.driver.find_element_by_css_selector('input[name="username"]')
         u_input.send_keys(login)
@@ -54,6 +53,8 @@ class InstagramPageParser():
             # Getting images urls
             image_urls = post_div.find_element_by_css_selector('.KL4Bh > img')
 
+            # Getting countable of comments
+
             # opening the post and getting the essential info out of it
             self.driver.execute_script("arguments[0].click();", post_div)
 
@@ -79,7 +80,7 @@ class InstagramPageParser():
                 'date': date_per_post.get_attribute('datetime'),
                 'subscribers': subscribers.get_attribute('title'),
                 'subscribed': subscribed.text,
-                'image_urls': image_urls.get_attribute('srcset')
+                'image_urls': image_urls.get_attribute('srcset'),
             }
             self.data.append(post)
 
