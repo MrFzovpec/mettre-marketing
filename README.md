@@ -13,3 +13,7 @@ starts to parse google trends page.<br>
 P.S right now it doesn't work, because the google page doesn't refresh after the button clicking <br>
 
 <b>cats_update/model.py</b> - the file contains a class of the model <i>DistilBERTClassification</i> and the function <i>get_the_model</i> which uploads the model with its trained weights
+
+## About marketing analysis
+
+<b>markeing_analysis</b> - the file contains a class of an Instagram Page parser, which on call parses a particular page. Right now doesn't work. Creates an Exception when I'm trying to find the post element
