@@ -16,4 +16,4 @@ P.S right now it doesn't work, because the google page doesn't refresh after the
 
 ## About marketing analysis
 
-<b>markeing_analysis</b> - the file contains a class of an Instagram Page parser, which on call parses a particular page. Right now doesn't work. Creates an Exception when I'm trying to find the post element
+<b>markeing_analysis/instagram_parser.py</b> - the file contains a class of an Instagram Page parser, which on call parses a particular page. In order to get it work you need to make a copy of secret.txt, change its format to .py and write down your login and password
