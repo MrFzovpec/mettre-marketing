@@ -30,7 +30,7 @@ class InstagramInteraction:
             This function does this thing
         '''
         # Login into Instagram in order to parse the page
-        login_div = self.driver.find_element_by_class_name('eLAPa')
+        login_div = self.driver.find_element_by_css_selector('div.ZcHy5 > span.r9-Os > button.sqdOP')
         self.driver.execute_script("arguments[0].click();", login_div)
         self.driver.implicitly_wait(10)
         self.login()

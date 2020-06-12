@@ -41,7 +41,3 @@ class HashtagUserParser(InstagramInteraction):
 
     def simple_post_login_initializer(self):
         super().simple_post_login_initializer()
-
-
-hashtag = HashtagUserParser(url='https://www.instagram.com/explore/tags/popular/')
-hashtag()

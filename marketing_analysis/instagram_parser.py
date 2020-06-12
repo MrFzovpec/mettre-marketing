@@ -1,10 +1,7 @@
 import selenium
 from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.chrome.options import Options
 from selenium.common.exceptions import InvalidArgumentException
 from secret import get_username, get_password
-import time
 from instagram_interaction import InstagramInteraction
 
 
@@ -18,12 +15,16 @@ class InstagramPageParser(InstagramInteraction):
     def __call__(self, max_posts=None):
         self.driver.get(self.url)
 
-        self.simple_post_login_initializer()
+        try:
+            self.simple_post_login_initializer()
+        except selenium.common.exceptions.NoSuchElementException:
+            pass
 
         # Getting metadata about account
         posts_countable = self.driver.find_element_by_css_selector('ul.k9GMp > li.Y8-fY > span.-nal3 > span.g47SY')
         subscribers = self.driver.find_elements_by_css_selector('ul.k9GMp > li.Y8-fY > a.-nal3 > span.g47SY')[0]
         subscribed = self.driver.find_elements_by_css_selector('ul.k9GMp > li.Y8-fY > a.-nal3 > span.g47SY')[1]
+        description = self.driver.find_element_by_css_selector('div.-vDIg > span')
 
         # Getting data about posts
         if max_posts:
@@ -64,6 +65,7 @@ class InstagramPageParser(InstagramInteraction):
                 'subscribers': subscribers.get_attribute('title'),
                 'subscribed': subscribed.text,
                 'image_urls': image_urls.get_attribute('srcset'),
+                'account_description': description.text
             }
             self.data.append(post)
 
@@ -74,7 +76,11 @@ class InstagramPageParser(InstagramInteraction):
     def _get_the_text(post):
         ''' The function gets the text from the !OPENED! post'''
         post_text_block = post.find_element_by_class_name('C4VMK')
-        post_text = post_text_block.find_elements_by_tag_name('span')[1]
+        post_text = post_text_block.find_elements_by_tag_name('span')
+        try:
+            post_text = post_text[1]
+        except IndexError:
+            post_text = post_text[0]
 
         return post_text
 
@@ -88,7 +94,3 @@ class InstagramPageParser(InstagramInteraction):
         time_block = post.find_element_by_css_selector('div.eo2As > div.k_Q0X.NnvRN > a > time')
         return time_block
 
-
-page_parse = InstagramPageParser(url='https://www.instagram.com/instagram/')
-page_parse(max_posts=10)
-print(page_parse.data)
