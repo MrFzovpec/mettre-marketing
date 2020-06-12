@@ -3,6 +3,7 @@ from selenium import webdriver
 from selenium.common.exceptions import InvalidArgumentException
 from secret import get_username, get_password
 from instagram_interaction import InstagramInteraction
+import time
 
 
 class InstagramPageParser(InstagramInteraction):
@@ -41,6 +42,8 @@ class InstagramPageParser(InstagramInteraction):
 
             # opening the post and getting the essential info out of it
             self.driver.execute_script("arguments[0].click();", post_div)
+
+            time.sleep(3)
 
             # collecting data
             opened_post = self.driver.find_element_by_class_name('PdwC2')
