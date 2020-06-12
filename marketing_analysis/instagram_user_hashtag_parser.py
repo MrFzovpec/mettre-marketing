@@ -32,7 +32,6 @@ class HashtagUserParser(InstagramInteraction):
         for post_div in posts_div:
             self.driver.execute_script("arguments[0].click();", post_div)
 
-            time.sleep(2)
             try:
                 link_to_the_profile = self.driver.find_element_by_css_selector('div.e1e1d > a.sqdOP')
                 self.data.append(link_to_the_profile.get_attribute('href'))

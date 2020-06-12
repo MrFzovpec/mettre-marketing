@@ -44,10 +44,14 @@ for tag in tags:
     print('Parsing hashtag: {}'.format(tag))
     hastag = HashtagUserParser(tag)
     hastag()
+    print(hastag.data)
     for user in hastag.data:
         print('Parsing user: {}'.format(user))
         user_parser = InstagramPageParser(user)
-        user_parser()
+        try:
+            user_parser()
+        except Exception as ex:
+            print('An exception occured: {}'.format(ex.args))
         df = df.append(user_parser.data)
         df.to_csv('instagram.csv')
 
