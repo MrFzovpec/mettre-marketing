@@ -18,15 +18,7 @@ class InstagramPageParser(InstagramInteraction):
     def __call__(self, max_posts=None):
         self.driver.get(self.url)
 
-        # Login into Instagram in order to parse the page
-        login_div = self.driver.find_element_by_class_name('eLAPa')
-        self.driver.execute_script("arguments[0].click();", login_div)
-        self.driver.implicitly_wait(10)
-        self.login()
-        time.sleep(5)
-
-        # Relocating back to the searchable page
-        self.driver.get(self.url)
+        self.simple_post_login_initializer()
 
         # Getting metadata about account
         posts_countable = self.driver.find_element_by_css_selector('ul.k9GMp > li.Y8-fY > span.-nal3 > span.g47SY')
@@ -75,6 +67,9 @@ class InstagramPageParser(InstagramInteraction):
             }
             self.data.append(post)
 
+    def simple_post_login_initializer(self):
+        super().simple_post_login_initializer()
+
     @staticmethod
     def _get_the_text(post):
         ''' The function gets the text from the !OPENED! post'''
@@ -95,5 +90,5 @@ class InstagramPageParser(InstagramInteraction):
 
 
 page_parse = InstagramPageParser(url='https://www.instagram.com/instagram/')
-page_parse(max_posts=5)
+page_parse(max_posts=10)
 print(page_parse.data)

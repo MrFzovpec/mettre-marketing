@@ -23,3 +23,18 @@ class InstagramInteraction:
 
         login_btn = self.driver.find_element_by_css_selector(".DhRcB")
         login_btn.click()
+
+    def simple_post_login_initializer(self):
+        '''
+            When we're just coming to the Instagram page and clicking on the post it's asking us to log in
+            This function does this thing
+        '''
+        # Login into Instagram in order to parse the page
+        login_div = self.driver.find_element_by_class_name('eLAPa')
+        self.driver.execute_script("arguments[0].click();", login_div)
+        self.driver.implicitly_wait(10)
+        self.login()
+        time.sleep(5)
+
+        # Relocating back to the searchable page
+        self.driver.get(self.url)
