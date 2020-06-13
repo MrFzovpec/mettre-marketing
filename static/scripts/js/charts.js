@@ -1,3 +1,4 @@
+// График популярности категорий по поисковым запросам
 function linen_graph() {
     google.charts.load('current', {'packages': ['corechart']});
     google.charts.setOnLoadCallback(drawChart);
@@ -26,6 +27,7 @@ function linen_graph() {
     }
 }
 
+// График популярности категорий в соцсети
 function linen_category_graph() {
     google.charts.load('current', {'packages': ['corechart']});
     google.charts.setOnLoadCallback(drawChart);
@@ -40,7 +42,7 @@ function linen_category_graph() {
         ]);
 
         var options = {
-            legendTextStyle: {color: '#E4E4E4'},
+            legendTextStyle: {color: '#e4e4e4'},
             textStyle: {color: '#E4E4E4'},
             axisStyle: {color: '#E4E4E4'},
             titleTextStyle: {color: '#E4E4E4'},
@@ -54,6 +56,7 @@ function linen_category_graph() {
     }
 }
 
+// Круговая диаграмма со статистикой популярности постов по категориям
 function category_pie_social() {
     google.charts.load('current', {'packages': ['corechart']});
     google.charts.setOnLoadCallback(drawChart);
@@ -86,6 +89,7 @@ function category_pie_social() {
     }
 }
 
+// Круговая диаграмма со статистикой поисковых запросов по категориям
 function category_pie_browser() {
     google.charts.load('current', {'packages': ['corechart']});
     google.charts.setOnLoadCallback(drawChart);

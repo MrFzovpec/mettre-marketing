@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect
-from django.http import JsonResponse
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.models import User
 
 
+# Авторизация пользователя
 def userLogin(request):
     if not request.user.is_authenticated:
         if request.method == 'GET':
@@ -20,6 +20,7 @@ def userLogin(request):
         return redirect('/')
 
 
+# Регистрация пользователя
 def userSignup(request):
     if not request.user.is_authenticated:
         if request.method == 'GET':
@@ -32,6 +33,7 @@ def userSignup(request):
         return redirect('/')
 
 
+# Выход из аккаунта пользователя
 def userLogout(request):
     if request.user.is_authenticated:
         logout(request)
