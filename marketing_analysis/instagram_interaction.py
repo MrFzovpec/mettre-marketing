@@ -10,6 +10,7 @@ import time
 class InstagramInteraction:
     def __init__(self, url: str, driver=webdriver.Chrome):
         options = Options()
+        options.add_argument('--headless')
         self.driver = driver(ChromeDriverManager().install(), chrome_options=options)
         self.url = url
         self.data = []

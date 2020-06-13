@@ -3,10 +3,9 @@ from instagram_user_hashtag_parser import HashtagUserParser
 import pandas as pd
 
 tags = (
-    'https://www.instagram.com/explore/tags/бизнес/',
+    'https://www.instagram.com/explore/tags/программирование/',
     'https://www.instagram.com/explore/tags/работавдекрете/',
     'https://www.instagram.com/explore/tags/бизнесвсети/',
-    'https://www.instagram.com/explore/tags/программирование/',
     'https://www.instagram.com/explore/tags/разработкасайтов/',
     'https://www.instagram.com/explore/tags/продвижениесайтов/',
     'https://www.instagram.com/explore/tags/контекстнаяреклама/',
