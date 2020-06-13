@@ -3,6 +3,9 @@ from instagram_user_hashtag_parser import HashtagUserParser
 import pandas as pd
 
 tags = (
+    'https://www.instagram.com/explore/tags/город/',
+    'https://www.instagram.com/explore/tags/здания/',
+    'https://www.instagram.com/explore/tags/улица/',
     'https://www.instagram.com/explore/tags/программирование/',
     'https://www.instagram.com/explore/tags/работавдекрете/',
     'https://www.instagram.com/explore/tags/бизнесвсети/',
@@ -52,7 +55,7 @@ for tag in tags:
     hastag = HashtagUserParser(tag)
     hastag()
     print(hastag.data)
-    for user in hastag.data:
+    for user in set(hastag.data):
         print('Parsing user: {}'.format(user))
         user_parser = InstagramPageParser(user)
         try:
