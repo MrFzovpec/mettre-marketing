@@ -3,7 +3,15 @@ from instagram_user_hashtag_parser import HashtagUserParser
 import pandas as pd
 
 tags = (
-    'https://www.instagram.com/explore/tags/drawdrawdraw/',
+    'https://www.instagram.com/explore/tags/бизнес/',
+    'https://www.instagram.com/explore/tags/работавдекрете/',
+    'https://www.instagram.com/explore/tags/бизнесвсети/',
+    'https://www.instagram.com/explore/tags/программирование/',
+    'https://www.instagram.com/explore/tags/разработкасайтов/',
+    'https://www.instagram.com/explore/tags/продвижениесайтов/',
+    'https://www.instagram.com/explore/tags/контекстнаяреклама/',
+    'https://www.instagram.com/explore/tags/блоггеры/',
+    'https://www.instagram.com/explore/tags/вайнер/',
     'https://www.instagram.com/explore/tags/sketchingart/',
     'https://www.instagram.com/explore/tags/penartwork/',
     'https://www.instagram.com/explore/tags/fashion/',
@@ -38,7 +46,7 @@ tags = (
     'https://www.instagram.com/explore/tags/coatofarms/'
 )
 
-df = pd.DataFrame()
+df = pd.read_csv('instagram.csv')
 
 for tag in tags:
     print('Parsing hashtag: {}'.format(tag))

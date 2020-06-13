@@ -31,6 +31,7 @@ class HashtagUserParser(InstagramInteraction):
         # Starting a loop in order to scrap info from posts
         for post_div in posts_div:
             self.driver.execute_script("arguments[0].click();", post_div)
+            time.sleep(3)
 
             try:
                 link_to_the_profile = self.driver.find_element_by_css_selector('div.e1e1d > a.sqdOP')

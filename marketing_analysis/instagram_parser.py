@@ -22,6 +22,7 @@ class InstagramPageParser(InstagramInteraction):
             pass
 
         # Getting metadata about account
+
         posts_countable = self.driver.find_element_by_css_selector('ul.k9GMp > li.Y8-fY > span.-nal3 > span.g47SY')
         subscribers = self.driver.find_elements_by_css_selector('ul.k9GMp > li.Y8-fY > a.-nal3 > span.g47SY')[0]
         subscribed = self.driver.find_elements_by_css_selector('ul.k9GMp > li.Y8-fY > a.-nal3 > span.g47SY')[1]
