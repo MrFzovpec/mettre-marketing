@@ -17,10 +17,11 @@ class HashtagUserParser(InstagramInteraction):
 
     def __call__(self, max_posts=None):
         self.driver.get(self.url)
+        time.sleep(5)
         try:
             self.simple_post_login_initializer()
-        except selenium.common.exceptions.NoSuchElementException:
-            pass
+        except selenium.common.exceptions.NoSuchElementException as ex:
+            print('Login exception occured: {}'.format(ex.args))
 
         # Getting data about posts
         if max_posts:
@@ -36,8 +37,8 @@ class HashtagUserParser(InstagramInteraction):
             try:
                 link_to_the_profile = self.driver.find_element_by_css_selector('div.e1e1d > a.sqdOP')
                 self.data.append(link_to_the_profile.get_attribute('href'))
-            except selenium.common.exceptions.NoSuchElementException:
-                pass
+            except selenium.common.exceptions.NoSuchElementException as ex:
+                print('Profile link exception occured: {}'.format(ex.args))
 
             # closing the post
             close_btn = self.driver.find_element_by_class_name('wpO6b')

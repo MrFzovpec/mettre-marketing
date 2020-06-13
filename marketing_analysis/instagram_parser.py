@@ -15,7 +15,7 @@ class InstagramPageParser(InstagramInteraction):
 
     def __call__(self, max_posts=None):
         self.driver.get(self.url)
-
+        time.sleep(5)
         try:
             self.simple_post_login_initializer()
         except selenium.common.exceptions.NoSuchElementException:
