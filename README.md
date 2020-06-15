@@ -16,6 +16,6 @@ P.S right now it doesn't work, because the google page doesn't refresh after the
 
 ## About marketing analysis
 
-<b>marketing_analysis/instagram/ - the directory with an Instagram analysis
+<b>marketing_analysis/instagram/</b> - the directory with an Instagram analysis
 <b>markeing_analysis/instagram/instagram_parser.py</b> - the file contains a class of an Instagram Page parser, which on call parses a particular page. In order to get it work you need to make a copy of secret.txt, change its format to .py and write down your login and password
 <b>marketing_analysis/instagram/instagram_user_hashtag_parser.py</b> - the file contains a class of the Instagram parser by hashtag. On call parses the hashtag page and gives users list (for data collection)
