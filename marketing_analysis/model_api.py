@@ -1,7 +1,7 @@
 from flask import Flask, request
 from flask_restful import Resource, Api
 from instagram.instagram_parser import InstagramPageParser
-import datetime
+from datetime import datetime
 
 app = Flask(__name__)
 api = Api(app)
@@ -21,6 +21,7 @@ class UserDealer(Resource):
         data = self.parse_previous_posts()
         new_text, new_image = user_info['text'], user_info['image']
         data = self.make_up_data_for_the_prediction(text=new_text, image=new_image, previous_data=data)
+        print(data)
 
         return {'Data': data}
 
@@ -38,7 +39,9 @@ class UserDealer(Resource):
             'total_posts': previous_data[0]['total_posts']
         }
 
-        return previous_data.append(new_post_data)
+        previous_data.append(new_post_data)
+
+        return previous_data
 
     def parse_previous_posts(self, num=4):
         self.parser = self.parser(self.url)
