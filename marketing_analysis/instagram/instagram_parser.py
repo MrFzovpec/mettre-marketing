@@ -1,17 +1,17 @@
 import selenium
 from selenium import webdriver
 from selenium.common.exceptions import InvalidArgumentException
-from secret import get_username, get_password
-from instagram_interaction import InstagramInteraction
+from instagram.secret import get_username, get_password
+from instagram.instagram_interaction import InstagramInteraction
 import time
 
 
 class InstagramPageParser(InstagramInteraction):
     def __init__(self, url: str, driver=webdriver.Chrome):
-        super().__init__(url)
+        super().__init__(url, driver)
 
     def login(self, login=get_username(), password=get_password()):
-        super().login()
+        super().login(login, password)
 
     def __call__(self, max_posts=None):
         self.driver.get(self.url)
