@@ -2,6 +2,8 @@ from flask import Flask, request
 from flask_restful import Resource, Api
 from instagram.instagram_parser import InstagramPageParser
 from datetime import datetime
+from pandas import DataFrame
+from encoders.pandas_to_numbers_encoder import DatasetManager
 
 app = Flask(__name__)
 api = Api(app)
@@ -10,6 +12,7 @@ class UserDealer(Resource):
     def __init__(self):
         self.url = None
         self.parser = InstagramPageParser
+        self.data_encoder = DatasetManager
 
     def post(self):
         ''' The post data must contain the user profile url with name "url", his new post-text with a name "text" and link
@@ -47,6 +50,10 @@ class UserDealer(Resource):
         self.parser = self.parser(self.url)
         self.parser(max_posts=num)
         return self.parser.data
+
+    def convert_data_to_tensors(self, array_of_data):
+        pred_df = DataFrame(data=array_of_data)
+
 
 
 
