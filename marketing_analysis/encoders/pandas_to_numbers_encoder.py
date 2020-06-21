@@ -4,10 +4,9 @@ from encoders.numeric_encoder import DateEncoder, MetaDataEncoder
 import random
 
 class DatasetManager():
-  def __init__(self, df, text_encoder=TextEncoder(),
+  def __init__(self, text_encoder=TextEncoder(),
                image_encoder=ImageEncoder(), meta_data_encoder=MetaDataEncoder(),
                date_encoder=DateEncoder()):
-    self.df = df
 
     # Encoders for different data
     self.text_encoder, self.account_description_encoder = text_encoder, text_encoder
@@ -17,8 +16,7 @@ class DatasetManager():
     self.total_posts_encoder, self.subscribers_encoder = meta_data_encoder, meta_data_encoder
     self.subscribed_encoder = meta_data_encoder
 
-  def __getitem__(self, index):
-    sample_data = self.data[index]
+  def __call__(self, sample_data):
 
     return {
         'total_posts': self.total_posts_encoder.encode(sample_data['total_posts']),
@@ -30,6 +28,3 @@ class DatasetManager():
         'subscribed': self.subscribed_encoder.encode(sample_data['subscribed']),
         'account_description': self.account_description_encoder.encode(sample_data['account_description']),
     }
-
-  def __len__(self):
-    return len(self.data)

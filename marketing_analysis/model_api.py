@@ -12,7 +12,7 @@ class UserDealer(Resource):
     def __init__(self):
         self.url = None
         self.parser = InstagramPageParser
-        self.data_encoder = DatasetManager
+        self.data_encoder = DatasetManager()
 
     def post(self):
         ''' The post data must contain the user profile url with name "url", his new post-text with a name "text" and link
@@ -23,8 +23,10 @@ class UserDealer(Resource):
         # Getting the data including new post
         data = self.parse_previous_posts()
         new_text, new_image = user_info['text'], user_info['image']
+        # Making up the data, so it's ready to create a prediction
         data = self.make_up_data_for_the_prediction(text=new_text, image=new_image, previous_data=data)
-        print(data)
+        # Encoding the data
+        data = self.convert_data_to_tensors(data)
 
         return {'Data': data}
 
@@ -52,7 +54,8 @@ class UserDealer(Resource):
         return self.parser.data
 
     def convert_data_to_tensors(self, array_of_data):
-        pred_df = DataFrame(data=array_of_data)
+        df = DataFrame(data=array_of_data)
+        return self.data_encoder(df)
 
 
 
