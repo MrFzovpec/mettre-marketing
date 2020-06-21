@@ -21,3 +21,13 @@ P.S right now it doesn't work, because the google page doesn't refresh after the
 <b>markeing_analysis/instagram/instagram_parser.py</b> - the file contains a class of an Instagram Page parser, which on call parses a particular page. In order to get it work you need to make a copy of secret.txt, change its format to .py and write down your login and password<br>
 
 <b>marketing_analysis/instagram/instagram_user_hashtag_parser.py</b> - the file contains a class of the Instagram parser by hashtag. On call parses the hashtag page and gives users list (for data collection)
+
+## About Flask API for the Marketing Analysis
+
+The API works with a <b>POST</b> requests in the format: <br>
+{
+    'url': user account urls (from this url the users data would be parsed (in the future we would somehow avoid this step or parse the data more efficiently as far as parsing takes way to much time (already have some thought about it)),
+    'text': the text user wrote for their post,
+    'image': link to the image user want to post for his post,
+    'social': social network user want to post their post (instagram for Instagram, vk for VK, facebook for Facebook)
+}
