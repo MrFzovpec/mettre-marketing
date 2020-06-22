@@ -97,4 +97,3 @@ class InstagramPageParser(InstagramInteraction):
     def _get_datetime(post):
         time_block = post.find_element_by_css_selector('div.eo2As > div.k_Q0X.NnvRN > a > time')
         return time_block
-

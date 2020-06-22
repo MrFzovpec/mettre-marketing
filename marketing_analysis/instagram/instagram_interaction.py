@@ -1,8 +1,6 @@
-import selenium
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
-from selenium.common.exceptions import InvalidArgumentException
 from instagram.secret import get_username, get_password
 import time
 

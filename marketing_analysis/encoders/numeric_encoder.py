@@ -7,6 +7,7 @@ class MetaDataEncoder:
   def encode(samples):
     meta_array = [] # creating an array for keeping all the metadata
     for i, sample in samples.iteritems():
+      sample = str(sample)
       meta_array.append(torch.tensor([int(sample.replace(',',''))], dtype=torch.float))
 
     return torch.stack(meta_array)

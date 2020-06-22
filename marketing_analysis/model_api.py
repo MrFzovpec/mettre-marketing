@@ -11,8 +11,8 @@ api = Api(app)
 class UserDealer(Resource):
     def __init__(self):
         self.url = None
-        self.parser = InstagramPageParser
         self.data_encoder = DatasetManager()
+        self.parser = InstagramPageParser
 
     def post(self):
         ''' The post data must contain the user profile url with name "url", his new post-text with a name "text" and link
@@ -49,7 +49,7 @@ class UserDealer(Resource):
         return previous_data
 
     def parse_previous_posts(self, num=4):
-        self.parser = self.parser(self.url)
+        self.parser = self.parser(url=self.url)
         self.parser(max_posts=num)
         return self.parser.data
 

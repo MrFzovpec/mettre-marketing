@@ -1,8 +1,9 @@
 import torch
 from transformers import DistilBertTokenizer
+import torch.nn.functional as F
 
 
-class TextEncoder():
+class TextEncoder:
     def __init__(self, tokenizer=DistilBertTokenizer.from_pretrained('distilbert-base-multilingual-cased')):
         self.tokenizer = tokenizer
 
