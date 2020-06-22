@@ -81,4 +81,4 @@ class LSTMPredictor(nn.Module):
     return h_0
 
   def get_first_cell_state(self, samples_countable):
-    return torch.zeros((samples_countable, self.memory_depth)).cuda()
+    return torch.zeros((samples_countable, self.memory_depth))

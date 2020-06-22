@@ -4,15 +4,21 @@ from instagram.instagram_parser import InstagramPageParser
 from datetime import datetime
 from pandas import DataFrame
 from encoders.pandas_to_numbers_encoder import DatasetManager
+from model.completed_model import EnsembledModelPredictor
 
 app = Flask(__name__)
 api = Api(app)
+
+# There's a section for uploading the external modules
+
+predictive_model = EnsembledModelPredictor()
 
 class UserDealer(Resource):
     def __init__(self):
         self.url = None
         self.data_encoder = DatasetManager()
         self.parser = InstagramPageParser
+        self.model = predictive_model
 
     def post(self):
         ''' The post data must contain the user profile url with name "url", his new post-text with a name "text" and link
@@ -27,8 +33,11 @@ class UserDealer(Resource):
         data = self.make_up_data_for_the_prediction(text=new_text, image=new_image, previous_data=data)
         # Encoding the data
         data = self.convert_data_to_tensors(data)
+        # Passing it into the model to get prediction
+        data = self.feed_into_model(data)
+        data = data.data.tolist()[0]
 
-        return {'Data': data}
+        return {'likes': data}
 
     @staticmethod
     def make_up_data_for_the_prediction(text, image, previous_data, date=datetime.now()):
@@ -56,6 +65,9 @@ class UserDealer(Resource):
     def convert_data_to_tensors(self, array_of_data):
         df = DataFrame(data=array_of_data)
         return self.data_encoder(df)
+
+    def feed_into_model(self, data):
+        return self.model(data)
 
 
 
