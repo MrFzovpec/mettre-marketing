@@ -35,7 +35,7 @@ class UserDealer(Resource):
         ''' Function makes up the data and makes it to be appropriate for the predicting '''
         new_post_data = {
             'text': text,
-            'image': image,
+            'image_urls': image,
             'subscribed': previous_data[0]['subscribed'],
             'subscribers': previous_data[0]['subscribers'],
             'date': date.strftime('%Y-%m-%dT%H:%M:%S.%fZ'),
