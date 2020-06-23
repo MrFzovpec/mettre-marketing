@@ -1,8 +1,9 @@
 import vk_api
+from secret import get_login, get_password
 
 
 class VK:
-    def __init__(self, login, password):
+    def __init__(self, login=get_login(), password=get_password()):
         self.vk_session = vk_api.VkApi(login, password)
         self.vk_session.auth()
         self.vk = self.vk_session.get_api()

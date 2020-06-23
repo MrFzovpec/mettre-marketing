@@ -1,7 +1,6 @@
 from parsers import VK
 import json
-login, password, = input("Логин: "), input("Пароль: ")
-vk = VK(login, password)
+vk = VK()
 
 #vk.get_page_bio('https://vk.com/brandshop_ru')
 

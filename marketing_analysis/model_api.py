@@ -5,12 +5,13 @@ from datetime import datetime
 from pandas import DataFrame
 from encoders.pandas_to_numbers_encoder import DatasetManager
 from model.completed_model import EnsembledModelPredictor
+from vk.parsers import VK
 
 app = Flask(__name__)
 api = Api(app)
 
 # There's a section for uploading the external modules
-
+vk_parser = VK
 predictive_model = EnsembledModelPredictor()
 
 class UserDealer(Resource):
