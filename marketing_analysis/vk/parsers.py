@@ -1,5 +1,5 @@
 import vk_api
-from secret import get_login, get_password
+from vk.secret import get_login, get_password
 
 
 class VK:
@@ -34,7 +34,7 @@ class VK:
             'date': last_post["date"]
         }
 
-    def get_all_posts(self, url, max_posts_in_hundreds=1):
+    def get_all_posts(self, url, max_offset=1, posts_countable=5):
         # Получаем ID группы
         group_id = self.preprocess(url)
 
@@ -43,8 +43,8 @@ class VK:
         posts_count = posts_body['count']
         all_posts = []
 
-        for offset in range(0, max_posts_in_hundreds, 100):
-            posts = self.vk.wall.get(owner_id=f'{group_id}', count=100, offset=offset)['items']
+        for offset in range(0, max_offset, posts_countable):
+            posts = self.vk.wall.get(owner_id=f'{group_id}', count=posts_countable, offset=offset)['items']
             for i, post in enumerate(posts):
                 try:
                     post_info = {
