@@ -14,13 +14,12 @@ api = Api(app)
 # There's a section for uploading the external modules
 VK_PARSER = VK()
 PREDICTIVE_MODEL = EnsembledModelPredictor()
-INSTAGRAM_PARSER = InstagramPageParser
+INSTAGRAM_PARSER = InstagramPageParser()
 
 class UserDealer(Resource):
     def __init__(self):
         self.url = None
         self.data_encoder = DatasetManager()
-        self.instagram_parser = INSTAGRAM_PARSER
 
     def post(self):
         ''' The post data must contain the user profile url with name "url", his new post-text with a name "text" and link
@@ -44,19 +43,13 @@ class UserDealer(Resource):
     def check_the_social_network_and_treat_accordingly(self, social_number):
         ''' This function parses the data from the users social network accordingly '''
         if social_number == 0: # For the Instagram
-            data = self.parse_previous_posts_from_instagram()
+            data = INSTAGRAM_PARSER(url=self.url, max_posts=4)
         elif social_number == 1: # For the VK
             data = VK_PARSER.get_all_posts(self.url)
         else:
             raise NotValidSocialNetworkIndex(social_number)
 
         return data
-
-
-    def parse_previous_posts_from_instagram(self, num=4):
-        self.instagram_parser = self.instagram_parser(url=self.url)
-        self.instagram_parser(max_posts=num)
-        return self.instagram_parser.data
 
     def convert_data_to_tensors(self, array_of_data):
         df = DataFrame(data=array_of_data)

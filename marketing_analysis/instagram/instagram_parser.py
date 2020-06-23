@@ -14,6 +14,7 @@ class InstagramPageParser(InstagramInteraction):
         super().login(login, password)
 
     def __call__(self, max_posts=None, url='https://www.instagram.com/instagram/'):
+        user_data = []
         self.driver.get(url)
         self.wait_by_css_selector('ul.k9GMp > li.Y8-fY > span.-nal3 > span.g47SY')
 
@@ -66,7 +67,8 @@ class InstagramPageParser(InstagramInteraction):
                 'image_urls': image_urls.get_attribute('srcset'),
                 'account_description': description.text
             }
-            self.data.append(post)
+            user_data.append(post)
+        return user_data
 
     def wait_by_css_selector(self, selector):
         super().wait_by_css_selector(selector)
