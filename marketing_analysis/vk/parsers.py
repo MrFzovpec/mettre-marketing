@@ -54,7 +54,8 @@ class VK:
                         'text': post['text'],
                         'type': post['post_type'],
                         'date': post["date"],
-                        'total_posts': posts_count
+                        'total_posts': posts_count,
+                        'image': '' # the image getting method needs to be added
                     }
                     all_posts.append(post_info)
                 except KeyError:

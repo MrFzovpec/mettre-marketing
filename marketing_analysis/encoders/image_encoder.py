@@ -13,6 +13,12 @@ class ImageEncoder():
     def encode(self, samples):
         image_array = []  # creating an array for keeping all the images
         for i, sample in samples.iteritems():
+            # if there's no image we will return tensors of zeros
+            if not sample:
+                empty_image = torch.zeros((3, 320, 320))
+                image_array.append(empty_image)
+                continue
+
             # Getting a clear link of an image
             if ',' in sample:
                 link_href = sample.split(',')[self.size_index][:-5]

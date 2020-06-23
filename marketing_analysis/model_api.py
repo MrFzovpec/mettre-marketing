@@ -42,9 +42,9 @@ class UserDealer(Resource):
         return {'likes': data}
 
     def check_the_social_network_and_treat_accordingly(self, social_number):
-        ''' This function parses the data from the users social network according to the stated social network '''
+        ''' This function parses the data from the users social network accordingly '''
         if social_number == 0: # For the Instagram
-            data = self.parse_previous_posts_from_instagram()   
+            data = self.parse_previous_posts_from_instagram()
         elif social_number == 1: # For the VK
             data = VK_PARSER.get_all_posts(self.url)
         else:
