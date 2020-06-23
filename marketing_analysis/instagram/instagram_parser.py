@@ -7,19 +7,15 @@ import time
 
 
 class InstagramPageParser(InstagramInteraction):
-    def __init__(self, url: str, driver=webdriver.Chrome):
-        super().__init__(url, driver)
+    def __init__(self, driver=webdriver.Chrome, debug=0):
+        super().__init__(driver, debug)
 
     def login(self, login=get_username(), password=get_password()):
         super().login(login, password)
 
-    def __call__(self, max_posts=None):
-        self.driver.get(self.url)
-        time.sleep(5)
-        try:
-            self.simple_post_login_initializer()
-        except selenium.common.exceptions.NoSuchElementException:
-            pass
+    def __call__(self, max_posts=None, url='https://www.instagram.com/instagram/'):
+        self.driver.get(url)
+        self.wait_by_css_selector('ul.k9GMp > li.Y8-fY > span.-nal3 > span.g47SY')
 
         # Getting metadata about account
 
@@ -44,8 +40,7 @@ class InstagramPageParser(InstagramInteraction):
             # opening the post and getting the essential info out of it
             self.driver.execute_script("arguments[0].click();", post_div)
 
-            time.sleep(3)
-
+            self.wait_by_css_selector('.PdwC2')
             # collecting data
             opened_post = self.driver.find_element_by_class_name('PdwC2')
             post_text = self._get_the_text(opened_post)
@@ -73,12 +68,12 @@ class InstagramPageParser(InstagramInteraction):
             }
             self.data.append(post)
 
-    def simple_post_login_initializer(self):
-        super().simple_post_login_initializer()
+    def wait_by_css_selector(self, selector):
+        super().wait_by_css_selector(selector)
 
-    @staticmethod
-    def _get_the_text(post):
+    def _get_the_text(self, post):
         ''' The function gets the text from the !OPENED! post'''
+        self.wait_by_css_selector('.C4VMK')
         post_text_block = post.find_element_by_class_name('C4VMK')
         post_text = post_text_block.find_elements_by_tag_name('span')
         try:
