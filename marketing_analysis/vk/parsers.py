@@ -33,31 +33,32 @@ class VK:
             'date': last_post["date"]
         }
 
-    def get_all_posts(self, url):
+    def get_all_posts(self, url, max_posts_in_hundreds=1):
         # Получаем ID группы
         group_id = self.preprocess(url)
 
         # Получаем информацию о записях в группе, кол-во всех записей
         posts_body = self.vk.wall.get(owner_id=f'{group_id}')
         posts_count = posts_body['count']
+        all_posts = []
 
-        all_posts = {}
-        for offset in range(0, posts_count, 100):
+        for offset in range(0, max_posts_in_hundreds, 100):
             posts = self.vk.wall.get(owner_id=f'{group_id}', count=100, offset=offset)['items']
             for i, post in enumerate(posts):
                 try:
-                    all_posts[i + offset] = {
+                    post_info = {
                         'comments': post["comments"]["count"],
                         'likes': post["likes"]["count"],
                         'views': post['views']["count"],
                         'text': post['text'],
                         'type': post['post_type'],
-                        'date': post["date"]
+                        'date': post["date"],
+                        'total_posts': posts_count
                     }
+                    all_posts.append(post_info)
                 except KeyError:
                     break
-
-        return all_posts
+            return all_posts
 
     def get_page_bio(self, url):
         group_id = self.preprocess(url)
