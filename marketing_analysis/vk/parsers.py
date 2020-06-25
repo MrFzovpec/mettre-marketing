@@ -1,9 +1,9 @@
 import vk_api
-import requests
+from vk.secret import get_login, get_password
 
 
 class VK:
-    def __init__(self, login, password):
+    def __init__(self, login=get_login(), password=get_password()):
         self.vk_session = vk_api.VkApi(login, password)
         self.vk_session.auth()
         self.vk = self.vk_session.get_api()
@@ -34,31 +34,33 @@ class VK:
             'date': last_post["date"]
         }
 
-    def get_all_posts(self, url):
+    def get_all_posts(self, url, max_offset=100, posts_countable=5):
         # Получаем ID группы
         group_id = self.preprocess(url)
 
         # Получаем информацию о записях в группе, кол-во всех записей
         posts_body = self.vk.wall.get(owner_id=f'{group_id}')
         posts_count = posts_body['count']
+        all_posts = []
 
-        all_posts = {}
-        for offset in range(0, posts_count, 100):
-            posts = self.vk.wall.get(owner_id=f'{group_id}', count=100, offset=offset)['items']
+        for offset in range(0, max_offset, posts_countable):
+            posts = self.vk.wall.get(owner_id=f'{group_id}', count=posts_countable, offset=offset)['items']
             for i, post in enumerate(posts):
                 try:
-                    all_posts[i + offset] = {
+                    post_info = {
                         'comments': post["comments"]["count"],
                         'likes': post["likes"]["count"],
                         'views': post['views']["count"],
                         'text': post['text'],
                         'type': post['post_type'],
-                        'date': post["date"]
+                        'date': post["date"],
+                        'total_posts': posts_count,
+                        'image': '' # the image getting method needs to be added
                     }
+                    all_posts.append(post_info)
                 except KeyError:
                     break
-
-        return all_posts
+            return all_posts
 
     def get_page_bio(self, url):
         group_id = self.preprocess(url)
@@ -74,8 +76,3 @@ class VK:
             'is_closed': meta_info["is_closed"],
             'type': meta_info["type"],
         }
-
-
-class Facebook:
-    def test_p(self):
-        return requests.get('http://graph.facebook.com/v7.0/CrocIncorporated/feed').content
