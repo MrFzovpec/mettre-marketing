@@ -1,4 +1,5 @@
 import vk_api
+import requests
 
 
 class VK:
@@ -73,3 +74,8 @@ class VK:
             'is_closed': meta_info["is_closed"],
             'type': meta_info["type"],
         }
+
+
+class Facebook:
+    def test_p(self):
+        return requests.get('http://graph.facebook.com/v7.0/CrocIncorporated/feed').content
