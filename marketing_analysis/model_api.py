@@ -55,7 +55,7 @@ class UserDealer(Resource):
 
     def convert_data_to_tensors(self, array_of_data):
         df = DataFrame(data=array_of_data)
-        return self.data_encoder(df)
+        return self.data_encoder(df, self.social)
 
     def feed_into_model(self, data):
         return PREDICTIVE_MODEL(data)
@@ -87,9 +87,8 @@ class UserDealer(Resource):
     def make_dict_of_data_vk(self, text, image, previous_data, date=datetime.now()):
         return {
             'text': text,
-            'image_urls': image,
             'subscribers': previous_data[0]['subscribers'],
-            'date': date.timestamp(),
+            'date': int(date.timestamp()),
             'likes': 0,
             'account_description': previous_data[0]['account_description'],
             'total_posts': previous_data[0]['total_posts'],

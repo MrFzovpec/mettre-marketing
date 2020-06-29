@@ -13,18 +13,31 @@ class DatasetManager():
     self.image_encoder = image_encoder
     self.date_encoder = date_encoder
     self.likes_encoder, self.comments_encoder = meta_data_encoder, meta_data_encoder
-    self.total_posts_encoder, self.subscribers_encoder = meta_data_encoder, meta_data_encoder
+    self.meta_encoder = meta_data_encoder
     self.subscribed_encoder = meta_data_encoder
 
-  def __call__(self, sample_data):
+  def __call__(self, sample_data, social):
+    if social == 0:
+        info_dict = {
+            'total_posts': self.meta_encoder.encode(sample_data['total_posts']),
+            'text': self.text_encoder.encode(sample_data['text']),
+            'likes': self.likes_encoder.encode(sample_data['likes']),
+            'date': self.date_encoder.encode(sample_data['date']),
+            'image': self.image_encoder.encode(sample_data['image_urls']),
+            'subscribers': self.meta_encoder.encode(sample_data['subscribers']),
+            'subscribed': self.subscribed_encoder.encode(sample_data['subscribed']),
+            'account_description': self.account_description_encoder.encode(sample_data['account_description']),
+        }
+    elif social == 1:
+        info_dict = {
+            'total_posts': self.meta_encoder.encode(sample_data['total_posts']),
+            'text': self.text_encoder.encode(sample_data['text']),
+            'likes': self.likes_encoder.encode(sample_data['likes']),
+            'views': self.likes_encoder.encode(sample_data['views']),
+            'comments': self.meta_encoder.encode(sample_data['comments']),
+            'date': self.meta_encoder.encode(sample_data['date']),
+            'subscribers': self.meta_encoder.encode(sample_data['subscribers']),
+            'account_description': self.account_description_encoder.encode(sample_data['account_description']),
+        }
 
-    return {
-        'total_posts': self.total_posts_encoder.encode(sample_data['total_posts']),
-        'text': self.text_encoder.encode(sample_data['text']),
-        'likes': self.likes_encoder.encode(sample_data['likes']),
-        'date': self.date_encoder.encode(sample_data['date']),
-        'image': self.image_encoder.encode(sample_data['image_urls']),
-        'subscribers': self.subscribers_encoder.encode(sample_data['subscribers']),
-        'subscribed': self.subscribed_encoder.encode(sample_data['subscribed']),
-        'account_description': self.account_description_encoder.encode(sample_data['account_description']),
-    }
+    return info_dict
