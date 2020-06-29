@@ -1,7 +1,4 @@
-from torch import nn
-
 from model_modules.submodels import *
-
 
 class EnsembledModelPredictor(nn.Module):
     def __init__(self):
