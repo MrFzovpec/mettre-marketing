@@ -5,24 +5,25 @@ class EnsembledModelPredictor(nn.Module):
         super().__init__()
         self.text = DistilBERTAnalysis()
         self.images = InceptionV3Analysis()
-        self.meta = MetaLinearAnalyzator()
+        self.meta = MetaLinearAnalyzator(input_size=3)
         self.all_to_one = AllToOneContext()
         self.likes = nn.Linear(1, 512)
         self.lstmer = LSTMPredictor()
         self.predictor = nn.Linear(512, 1)
 
     def forward(self, x):
-
         # Getting information about text
-        text, acc_description = x['text'], x['account_description']
-        text, acc_description = text[:, :512], acc_description[:, :512]
-        text_context, acc_description_context = self.text(text), self.text(acc_description)
+        text, acc_description = x['text']
+        text = text[:, :512]
+        text_context = self.text(text)
 
         # Getting the information about images
         image = x['image']
         image_context = self.images(image)
 
         # Getting the information about the account meta data
+        # Meta data - comments, likes, views, date
+        total_posts = x['total_posts'], x['']
         total_posts, subscribers = x['total_posts'], x['subscribers']
         date, subscribed = x['date'], x['subscribed']
         meta_data_tensor = torch.cat([total_posts, subscribers, date, subscribed], dim=1)

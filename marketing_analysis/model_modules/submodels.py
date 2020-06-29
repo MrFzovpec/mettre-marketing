@@ -31,9 +31,9 @@ class InceptionV3Analysis(nn.Module):
 
 
 class MetaLinearAnalyzator(nn.Module):
-  def __init__(self):
+  def __init__(self, input_size=4):
     super().__init__()
-    self.linear1 = nn.Linear(4, 32)
+    self.linear1 = nn.Linear(input_size, 32)
     self.linear2 = nn.Linear(32, 64)
 
   def forward(self, x):
@@ -46,9 +46,9 @@ class MetaLinearAnalyzator(nn.Module):
 
 
 class AllToOneContext(nn.Module):
-  def __init__(self):
+  def __init__(self, input_size=256):
     super().__init__()
-    self.linear1 = nn.Linear(256, 512)
+    self.linear1 = nn.Linear(input_size, 512)
 
   def forward(self, x):
     x = self.linear1(x)
