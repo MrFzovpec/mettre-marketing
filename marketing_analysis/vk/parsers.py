@@ -42,6 +42,7 @@ class VK:
         posts_body = self.vk.wall.get(owner_id=f'{group_id}')
         posts_count = posts_body['count']
         all_posts = []
+        bio = self.get_page_bio(url)
 
         for offset in range(0, max_offset, posts_countable):
             posts = self.vk.wall.get(owner_id=f'{group_id}', count=posts_countable, offset=offset)['items']
@@ -55,7 +56,9 @@ class VK:
                         'type': post['post_type'],
                         'date': post["date"],
                         'total_posts': posts_count,
-                        'image': '' # the image getting method needs to be added
+                        'image': '', # the image getting method needs to be added
+                        'subscribers': bio['subs'],
+                        'account_description': bio['description']
                     }
                     all_posts.append(post_info)
                 except KeyError:

@@ -85,11 +85,20 @@ class UserDealer(Resource):
         }
 
     def make_dict_of_data_vk(self, text, image, previous_data, date=datetime.now()):
-        pass
+        return {
+            'text': text,
+            'image_urls': image,
+            'subscribers': previous_data[0]['subscribers'],
+            'date': date.timestamp(),
+            'likes': 0,
+            'account_description': previous_data[0]['account_description'],
+            'total_posts': previous_data[0]['total_posts'],
+            'views': 0,
+            'comments': 0
+        }
 
 
 
 
 
 api.add_resource(UserDealer, '/')
-Flask.run(app)
