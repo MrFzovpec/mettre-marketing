@@ -14,7 +14,6 @@ class MetaDataEncoder:
 
 
 class DateEncoder:
-
   @staticmethod
   def encode(samples):
     date_array = []

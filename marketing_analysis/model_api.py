@@ -19,6 +19,7 @@ INSTAGRAM_PARSER = InstagramPageParser()
 class UserDealer(Resource):
     def __init__(self):
         self.url = None
+        self.social = None
         self.data_encoder = DatasetManager()
 
     def post(self):
@@ -26,9 +27,10 @@ class UserDealer(Resource):
         to his image with name "image" '''
         user_info = request.get_json()
         self.url = user_info['url']
+        self.social = user_info['social']
 
         # Getting the data including new post
-        data = self.check_the_social_network_and_treat_accordingly(user_info['social'])
+        data = self.check_the_social_network_and_treat_accordingly()
         new_text, new_image = user_info['text'], user_info['image']
         # Making up the data, so it's ready to create a prediction
         data = self.make_up_data_for_the_prediction(text=new_text, image=new_image, previous_data=data)
@@ -40,14 +42,14 @@ class UserDealer(Resource):
 
         return {'likes': data}
 
-    def check_the_social_network_and_treat_accordingly(self, social_number):
+    def check_the_social_network_and_treat_accordingly(self):
         ''' This function parses the data from the users social network accordingly '''
-        if social_number == 0: # For the Instagram
+        if self.social == 0: # For the Instagram
             data = INSTAGRAM_PARSER(url=self.url, max_posts=4)
-        elif social_number == 1: # For the VK
+        elif self.social == 1: # For the VK
             data = VK_PARSER.get_all_posts(self.url)
         else:
-            raise NotValidSocialNetworkIndex(social_number)
+            raise NotValidSocialNetworkIndex(self.social)
 
         return data
 
@@ -58,10 +60,20 @@ class UserDealer(Resource):
     def feed_into_model(self, data):
         return PREDICTIVE_MODEL(data)
 
-    @staticmethod
-    def make_up_data_for_the_prediction(text, image, previous_data, date=datetime.now()):
+    def make_up_data_for_the_prediction(self, text, image, previous_data, date=datetime.now()):
         ''' Function makes up the data and makes it to be appropriate for the predicting '''
-        new_post_data = {
+        if self.social == 0: # For Instagram
+            new_post_data = self.make_dict_of_data_instagram(text, image, previous_data, date=datetime.now())
+        elif self.social == 1: # For VK
+            new_post_data = self.make_dict_of_data_vk(text, image, previous_data, date=datetime.now())
+
+        previous_data.append(new_post_data)
+
+        return previous_data
+
+    @staticmethod
+    def make_dict_of_data_instagram(text, image, previous_data, date=datetime.now()):
+        return {
             'text': text,
             'image_urls': image,
             'subscribed': previous_data[0]['subscribed'],
@@ -72,11 +84,12 @@ class UserDealer(Resource):
             'total_posts': previous_data[0]['total_posts']
         }
 
-        previous_data.append(new_post_data)
+    def make_dict_of_data_vk(self, text, image, previous_data, date=datetime.now()):
+        pass
 
-        return previous_data
 
 
 
 
 api.add_resource(UserDealer, '/')
+Flask.run(app)
