@@ -4,7 +4,7 @@ from instagram.instagram_parser import InstagramPageParser
 from datetime import datetime
 from pandas import DataFrame
 from encoders.pandas_to_numbers_encoder import DatasetManager
-from model.completed_model import EnsembledModelPredictor
+from model_instagram.completed_model import EnsembledModelPredictor
 from vk.parsers import VK
 from model_api_exceptions import NotValidSocialNetworkIndex
 
@@ -34,7 +34,7 @@ class UserDealer(Resource):
         data = self.make_up_data_for_the_prediction(text=new_text, image=new_image, previous_data=data)
         # Encoding the data
         data = self.convert_data_to_tensors(data)
-        # Passing it into the model to get prediction
+        # Passing it into the model_instagram to get prediction
         data = self.feed_into_model(data)
         data = data.data.tolist()[0]
 
