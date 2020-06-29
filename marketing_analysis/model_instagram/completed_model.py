@@ -1,4 +1,4 @@
-from model.submodels import *
+from model_instagram.submodels import *
 from torch import nn
 
 

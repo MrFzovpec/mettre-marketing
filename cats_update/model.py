@@ -7,8 +7,8 @@ import os
 class DistilBERTClassification(nn.Module):
     def __init__(self):
         '''
-          Initializes a model
-          @param: first. If True - than its the first training and the model is going
+          Initializes a model_instagram
+          @param: first. If True - than its the first training and the model_instagram is going
           to use an AllenNLP dataset
         '''
         super().__init__()
@@ -28,7 +28,7 @@ class DistilBERTClassification(nn.Module):
         return x
 
 
-def get_the_model(filepath=os.path.join('Models', 'model.th')):
+def get_the_model(filepath=os.path.join('Models', 'model_instagram.th')):
     '''
         The function returns an object of DistilBERTClassification instance
     '''
