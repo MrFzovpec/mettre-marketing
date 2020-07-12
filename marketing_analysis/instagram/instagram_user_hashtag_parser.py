@@ -3,25 +3,23 @@ from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.chrome.options import Options
 from selenium.common.exceptions import InvalidArgumentException
-from secret import get_username, get_password
+from instagram.secret import get_username, get_password
 import time
-from instagram_interaction import InstagramInteraction
+from instagram.instagram_interaction import InstagramInteraction
 
 
 class HashtagUserParser(InstagramInteraction):
-    def __init__(self, url):
-        super().__init__(url)
+    def __init__(self, driver=webdriver.Chrome, debug=0):
+        super().__init__(driver, debug)
 
     def login(self, login=get_username(), password=get_password()):
-        super().login()
+        super().login(login, password)
 
-    def __call__(self, max_posts=None):
-        self.driver.get(self.url)
-        time.sleep(5)
-        try:
-            self.simple_post_login_initializer()
-        except selenium.common.exceptions.NoSuchElementException as ex:
-            print('Login exception occured: {}'.format(ex.args))
+    def wait_by_css_selector(self, selector):
+        super().wait_by_css_selector(selector)
+
+    def __call__(self, max_posts=None, url=''):
+        self.driver.get(url)
 
         # Getting data about posts
         if max_posts:
@@ -32,7 +30,7 @@ class HashtagUserParser(InstagramInteraction):
         # Starting a loop in order to scrap info from posts
         for post_div in posts_div:
             self.driver.execute_script("arguments[0].click();", post_div)
-            time.sleep(3)
+            self.wait_by_css_selector('div.e1e1d > a.sqdOP')
 
             try:
                 link_to_the_profile = self.driver.find_element_by_css_selector('div.e1e1d > a.sqdOP')
@@ -43,6 +41,3 @@ class HashtagUserParser(InstagramInteraction):
             # closing the post
             close_btn = self.driver.find_element_by_class_name('wpO6b')
             self.driver.execute_script("arguments[0].click();", close_btn)
-
-    def simple_post_login_initializer(self):
-        super().simple_post_login_initializer()

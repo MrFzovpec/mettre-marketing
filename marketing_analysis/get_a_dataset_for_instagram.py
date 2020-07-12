@@ -1,23 +1,8 @@
-from instagram_parser import InstagramPageParser
-from instagram_user_hashtag_parser import HashtagUserParser
+from instagram.instagram_parser import InstagramPageParser
+from instagram.instagram_user_hashtag_parser import HashtagUserParser
 import pandas as pd
 
 tags = (
-    'https://www.instagram.com/explore/tags/город/',
-    'https://www.instagram.com/explore/tags/здания/',
-    'https://www.instagram.com/explore/tags/улица/',
-    'https://www.instagram.com/explore/tags/программирование/',
-    'https://www.instagram.com/explore/tags/работавдекрете/',
-    'https://www.instagram.com/explore/tags/бизнесвсети/',
-    'https://www.instagram.com/explore/tags/разработкасайтов/',
-    'https://www.instagram.com/explore/tags/продвижениесайтов/',
-    'https://www.instagram.com/explore/tags/контекстнаяреклама/',
-    'https://www.instagram.com/explore/tags/блоггеры/',
-    'https://www.instagram.com/explore/tags/вайнер/',
-    'https://www.instagram.com/explore/tags/sketchingart/',
-    'https://www.instagram.com/explore/tags/penartwork/',
-    'https://www.instagram.com/explore/tags/fashion/',
-    'https://www.instagram.com/explore/tags/beautiful/',
     'https://www.instagram.com/explore/tags/love/',
     'https://www.instagram.com/explore/tags/picoftheday/',
     'https://www.instagram.com/explore/tags/happy/',
@@ -45,23 +30,41 @@ tags = (
     'https://www.instagram.com/explore/tags/medievalhistory/',
     'https://www.instagram.com/explore/tags/15thcentury/',
     'https://www.instagram.com/explore/tags/middleages/',
-    'https://www.instagram.com/explore/tags/coatofarms/'
+    'https://www.instagram.com/explore/tags/coatofarms/',
+    'https://www.instagram.com/explore/tags/apple/',
+    'https://www.instagram.com/explore/tags/nokia/',
+    'https://www.instagram.com/explore/tags/miami/',
+    'https://www.instagram.com/explore/tags/miamiliving/',
+    'https://www.instagram.com/explore/tags/usa/',
+    'https://www.instagram.com/explore/tags/4ofjuly/',
+    'https://www.instagram.com/explore/tags/trump/',
+    'https://www.instagram.com/explore/tags/homedecor/',
+    'https://www.instagram.com/explore/tags/homedecorideas/',
+    'https://www.instagram.com/explore/tags/livingroomdecor/',
+    'https://www.instagram.com/explore/tags/homedecor/',
+    'https://www.instagram.com/explore/tags/walldecor/',
+    'https://www.instagram.com/explore/tags/chinatown/',
+    'https://www.instagram.com/explore/tags/guangzhou/',
+    'https://www.instagram.com/explore/tags/virus/',
+    'https://www.instagram.com/explore/tags/pandemic/',
+    'https://www.instagram.com/explore/tags/covi̇d19/'
 )
 
-df = pd.read_csv('instagram.csv')
+user_parser = InstagramPageParser()
+hashtag = HashtagUserParser()
+df = pd.read_csv('instagram/instagram.csv', sep='|')
 
 for tag in tags:
     print('Parsing hashtag: {}'.format(tag))
-    hastag = HashtagUserParser(tag)
-    hastag()
-    print(hastag.data)
-    for user in set(hastag.data):
+    hashtag(url=tag)
+    print(hashtag.data)
+    for user in set(hashtag.data):
         print('Parsing user: {}'.format(user))
-        user_parser = InstagramPageParser(user)
         try:
-            user_parser()
+            result = user_parser(url=user)
         except Exception as ex:
             print('An exception occured: {}'.format(ex.args))
-        df = df.append(user_parser.data)
-        df.to_csv('instagram.csv')
+            continue
+        df = df.append(result)
+        df.to_csv('instagram/instagram.csv', sep='|')
 

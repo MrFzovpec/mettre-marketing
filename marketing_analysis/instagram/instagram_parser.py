@@ -64,7 +64,7 @@ class InstagramPageParser(InstagramInteraction):
                 'date': date_per_post.get_attribute('datetime'),
                 'subscribers': subscribers.get_attribute('title'),
                 'subscribed': subscribed.text,
-                'image_urls': image_urls.get_attribute('srcset'),
+                'image_urls': image_urls.get_attribute('alt'),
                 'account_description': description.text
             }
             user_data.append(post)
